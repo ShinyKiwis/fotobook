@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  thumbnail_img: MyString
+  like_count: 1
+  sharing_mode: MyString
+  publication_date: 2023-06-28 15:53:35
+  user: one
+
+two:
+  title: MyString
+  description: MyString
+  thumbnail_img: MyString
+  like_count: 1
+  sharing_mode: MyString
+  publication_date: 2023-06-28 15:53:35
+  user: two

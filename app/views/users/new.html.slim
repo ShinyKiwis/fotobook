@@ -1,10 +1,7 @@
 .col-sm-3.mt-6.mx-auto.text-center.px-2.px-md-0.custom-card
   h1
     | Fotobook Signup
-  .border.border-2.rounded-4.col-8.mx-auto.d-flex.justify-content-between.py-2.px-5
-    = image_tag("google-icon.png", size: "48x48")
-    = image_tag("facebook-icon", size: "48x48")
-    = image_tag("twitter-icon.png", size: "48x48")
+  = render "shared/social_login"
   .card.my-3
     .card-body.d-flex.align-items-center.flex-column
       = form_with model: @user, class: "w-100 px-4 d-flex align-items-center flex-column", id: "register-form" do |f| 

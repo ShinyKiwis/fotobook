@@ -1,0 +1,69 @@
+#left-col
+  
+  ul
+    list-style: none
+
+    a
+      color: gray
+
+    #active
+      color: $primary 
+
+    li 
+      font-weight: bold
+      color: gray
+      font-size: 1.2em
+      margin: 0.4em
+
+#mid-col
+  background-color: white
+  height: 86vh
+  border-radius: 0.8em !important
+
+  h5:nth-child(n+2)
+    color: $primary
+
+  #avatar
+    width: 10em
+    height: 10em
+    position: relative
+    background-position: center
+    background-image: url("../images/sample.png")
+
+  #avatar span 
+    position: absolute
+    left: 50%
+    transform: translate(-50%, 0)
+    width: fit-content
+    background-color: rgba(255,255,255,0.5)
+    padding: 0.3em 0.8em
+    border-radius: 0.4em
+    bottom: 10%
+    cursor: pointer
+    font-weight: 500
+
+
+  #avatar-edit
+    background-image: url("../images/sample.png")
+
+  #photo-container
+    margin-top: 1em
+    overflow-y: auto 
+    height: 90%
+
+  #button-list
+    margin-bottom: -1.5em
+    button 
+      padding: 0.6em 0.8em !important
+
+    #unselect
+      color: $primary
+      background-color: transparent
+      border: 2px solid $primary
+
+    button:nth-child(1)
+      border-radius: 0.4em 0 0 0.4em !important
+
+    button:nth-child(2)
+      border-radius: 0 0.4em 0.4em 0 !important
+

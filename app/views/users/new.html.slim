@@ -1,16 +1,18 @@
-.col-sm-3.mt-6.mx-auto.text-center.px-2.px-md-0.custom-card
+.col-sm-3.mt-5.mx-auto.text-center.px-2.px-md-0.custom-card
   h1
     | Fotobook Signup
   = render "shared/social_login"
   .card.my-3
     .card-body.d-flex.align-items-center.flex-column
       = form_with model: @user, class: "w-100 px-4 d-flex align-items-center flex-column", id: "register-form" do |f| 
-        = f.label :first_name,  class: "form-label align-self-start fw-bold"
+        = f.label :first_name, "First Name", class: "form-label align-self-start fw-bold"
         = f.text_field :first_name, placeholder: "First Name", autofocus: true, class: "form-control py-2"
-        = f.label :last_name,  class: "form-label align-self-start fw-bold"
+        = f.label :last_name,"Last Name", class: "form-label align-self-start fw-bold"
         = f.text_field :last_name, placeholder: "Last Name", class: "form-control py-2"
-        = f.label :new_password,  class: "form-label align-self-start fw-bold"
-        = f.text_field :new_password, placeholder: "New Password", class: "form-control py-2"
-        = f.label :password_confirmation,  class: "form-label align-self-start fw-bold"
-        = f.text_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control py-2"
-        = f.submit type: "button"
+        = f.label :email, class: "form-label align-self-start fw-bold"
+        = f.text_field :email, placeholder: "Email", class: "form-control py-2"
+        = f.label :new_password,"New Password", class: "form-label align-self-start fw-bold"
+        = f.text_field :new_password, placeholder: "Password", class: "form-control py-2"
+        = f.label :password_confirmation,"Password Confirmation", class: "form-label align-self-start fw-bold"
+        = f.text_field :password_confirmation, placeholder: "Password", class: "form-control py-2"
+        = f.submit "Signup", type: "button"

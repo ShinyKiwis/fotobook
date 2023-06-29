@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  def index
-    
+  def welcome
+    redirect_to photos_url
   end
 end

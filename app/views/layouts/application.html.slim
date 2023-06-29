@@ -11,8 +11,9 @@ html
   body
     = render 'layouts/navbar'
     - unless current_page?('/signup') || current_page?('/login') 
-      = render 'layouts/columns/left_col'
-      = render 'layouts/columns/mid_col'
-      = render 'layouts/columns/right_col'
+      .d-flex
+        = render 'layouts/columns/left_col'
+        = render 'layouts/columns/mid_col'
+        = render 'layouts/columns/right_col'
     - else
       = yield

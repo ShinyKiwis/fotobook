@@ -37,10 +37,12 @@ gem 'html2slim'
 # Use Bootstrap and Sass
 # gem "jquery-rails"
 gem 'jquery-rails'
-gem "bootstrap"
+gem 'bootstrap', '~> 5.3.0.alpha3'
 gem "sassc"
 gem "sassc-rails"
 
+# FontAwesome Icon 
+gem "font-awesome-sass", "~> 6.4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

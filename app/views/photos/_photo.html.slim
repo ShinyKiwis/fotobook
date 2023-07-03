@@ -1,0 +1,22 @@
+.custom-card.col-12.col-md-6[style="max-width: 540px;" data-bs-toggle="modal" data-bs-target="#photoModal"]
+  .card.mb-3
+    .row.g-0
+      .col-md-6
+        = image_tag "#{img_url}", class: "w-100 img-fluid rounded-start"
+      .col-md-6
+        div
+          .card-body.d-flex.flex-column
+            div
+              span.fs-5.fw-bold
+                | Nguyen Hua
+            h5.card-title.fw-bold
+              | Nam tempor posure
+            p.card-text
+              | lorem ipsum asd asd asdk laksdkqwlkd lasldk las Some quick example text to basdasdasduild on the card title aasdasdasdnd ma ke up the bulk of the card's content.
+            .mt-auto.d-flex.align-items-center.photo-bottom
+              span.d-flex.gap-2.align-items-center[style="cursor:pointer;"]
+                = render 'shared/heart'
+                |  123 
+              span.ms-auto.text-center
+                | 4:56 pm 18/06/2023
+  = render 'photos/modal', img_url: "#{img_url}"

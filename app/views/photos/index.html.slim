@@ -1,2 +1,12 @@
 - provide(:title, "Photos")
 = render "shared/gallery_switch", mode: "photo"
+#photo-container.w-100
+  .row.row-cols-2
+    = render 'photos/photo', img_url: "sample.png"
+    = render 'photos/photo', img_url: "sample.png"
+    = render 'photos/photo', img_url: "sample.png"
+    = render 'photos/photo', img_url: "sample.png"
+    = render 'photos/photo', img_url: "sample.png"
+    = render 'photos/photo', img_url: "sample.png"
+    = render 'photos/photo', img_url: "sample.png"
+    = render 'photos/photo', img_url: "sample.png"

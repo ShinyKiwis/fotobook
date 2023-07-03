@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  has_many :following, :class_name => "Follow", :foreign_key => "followee"
-  has_many :followees, :through => :follows
+  has_many :following, class_name => 'Follow', foreign_key => 'followee_id'
+  has_many :followees, through => :following
 
-  has_many :followed, :class_name => "Follow", :foreign_key => "follower"
-  has_many :followers, :through => :follows
+  has_many :followed, class_name => 'Follow', foreign_key => 'follower_id'
+  has_many :followers, through => :followed
 
   has_many :albums
   has_many :photos

@@ -2,6 +2,6 @@
 /   = button_to "PHOTO", photos_path(@profile), method: :get, id: mode == 'photo': '': 'unselect'
 /   = button_to "ALBUM", albums_path(@album), method: :get, id: mode == 'album': '': 'unselect'
 #button-list.mt-1.d-flex
-  = button_to "PHOTO", photos_path(@profile), method: :get, id: "#{mode == 'photo' ? '' : 'unselect'}"
-  = button_to "ALBUM", albums_path(@album), method: :get, id: "#{mode == 'album' ? '' : 'unselect'}"
+  = button_to "PHOTO", path(request.path, "PHOTO", @profile), method: :get, id: "#{mode == 'photo' ? '' : 'unselect'}"
+  = button_to "ALBUM", path(request.path, "ALBUM", @album), method: :get, id: "#{mode == 'album' ? '' : 'unselect'}"
 

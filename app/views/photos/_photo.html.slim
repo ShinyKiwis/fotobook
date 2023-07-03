@@ -6,9 +6,10 @@
       .col-md-6
         div
           .card-body.d-flex.flex-column
-            div
+            div.d-flex.align-items-center
               span.fs-5.fw-bold
                 | Nguyen Hua
+              = render 'shared/follow_button' if request.path.include?("discover")
             h5.card-title.fw-bold
               | Nam tempor posure
             p.card-text

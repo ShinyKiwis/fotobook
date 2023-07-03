@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :users
   resource :session, only: [:new, :create, :destroy]
 
-  scope :feeds do
+  scope :feeds, as: 'feeds', shallow_path: 'feeds' do
+    resources :photos, :albums
+  end
+
+  scope :discover, as: 'discover', shallow_path: 'discover' do
     resources :photos, :albums
   end
 

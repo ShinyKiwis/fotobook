@@ -1,8 +1,9 @@
 #left-col.col-sm-2.d-md-block.d-none
   ul.ms-4.mt-5
     li
-      a#active[href="/"]
+    li
+      a#active[href="/", class="#{request.path.include?("feeds") ? "active" :""}"]
         | Feeds
     li
-      a
+      a[href='/discover/photos', class="#{request.path.include?("discover") ? "active" :""}"]
         | Discover

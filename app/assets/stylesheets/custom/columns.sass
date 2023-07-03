@@ -5,7 +5,7 @@
     a
       color: gray
 
-    #active
+    .active
       color: $primary 
 
     li 
@@ -21,6 +21,27 @@
 
   h5:nth-child(n+2)
     color: $primary
+
+  .follow-btn
+    background: linear-gradient(white 0 0) padding-box, $follow-btn-background border-box 
+    color: #ff9d00
+    margin: 0 !important
+    margin-left: auto !important
+    padding: 0.2em 1.2em !important
+    border: 3px solid transparent 
+    border-radius: 1em !important
+    display: inline-block 
+    margin: 75px 0 
+    
+  .following-btn
+    color: white
+    display: inline-block 
+    margin: 0 !important
+    margin-left: auto !important
+    padding: 0.2em 1.2em !important
+    border: none !important
+    border-radius: 1em !important
+    background-image: $follow-btn-background !important
 
   #avatar
     width: 10em

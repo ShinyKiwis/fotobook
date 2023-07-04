@@ -1,15 +1,12 @@
 .custom-card.col-12.col-md-6[style="max-width: 540px;" data-bs-toggle="modal" data-bs-target="#photoModal"]
   .card.mb-3
-    .row.g-0
+    .row.g-0.
       .col-md-6
-        = image_tag "#{img_url}", class: "w-100 img-fluid rounded-start"
+        = image_tag "#{img_url}", class: "w-100 rounded-start thumbnail-img"
       .col-md-6
         div
           .card-body.d-flex.flex-column
-            div.d-flex.align-items-center
-              span.fs-5.fw-bold
-                | Nguyen Hua
-              = render 'shared/follow_button' if request.path.include?("discover")
+            = render 'shared/user_container', username: 'Nguyen Hua'
             h5.card-title.fw-bold
               | Nam tempor posure
             p.card-text

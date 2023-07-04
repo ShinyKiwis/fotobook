@@ -1,0 +1,5 @@
+div.d-flex.align-items-center
+  span.fs-5.fw-bold
+    |  #{username}
+  = render 'shared/follow_button' if request.path.include?("discover")
+ 

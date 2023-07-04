@@ -1,8 +1,11 @@
+// Remember, all modal will display same photo, since all modal have same id, so only the first one will be toggle
+// Solution: use a flexible id => use dom_id of Rails to solve this!
 - provide(:title, "Photos")
 = render "shared/gallery_switch", mode: "photo"
 #photo-container.w-100
   .row.row-cols-2
     = render 'photos/photo', img_url: "sample.png"
+    = render 'photos/photo', img_url: "avatar.jpeg"
     = render 'photos/photo', img_url: "sample.png"
     = render 'photos/photo', img_url: "sample.png"
     = render 'photos/photo', img_url: "sample.png"

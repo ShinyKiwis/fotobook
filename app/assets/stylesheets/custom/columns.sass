@@ -22,6 +22,16 @@
   h5:nth-child(n+2)
     color: $primary
 
+  @media screen and (min-width: 768px)
+    .thumbnail-img
+      height: 17vw
+      object-fit:cover
+
+  @media screen and (max-width: 768px)
+    .thumbnail-img
+      height: 100vw
+      object-fit:cover
+
   .follow-btn
     background: linear-gradient(white 0 0) padding-box, $follow-btn-background border-box 
     color: #ff9d00

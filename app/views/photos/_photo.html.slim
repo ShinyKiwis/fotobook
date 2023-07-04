@@ -1,7 +1,7 @@
-.custom-card.col-12.col-md-6[style="max-width: 540px;" data-bs-toggle="modal" data-bs-target="#photoModal"]
+.custom-card.col-12.col-md-6[style="max-width: 540px;"]
   .card.mb-3
     .row.g-0.
-      .col-md-6
+      .col-md-6[data-bs-toggle="modal" data-bs-target="#photoModal"]
         = image_tag "#{img_url}", class: "w-100 rounded-start thumbnail-img"
       .col-md-6
         div

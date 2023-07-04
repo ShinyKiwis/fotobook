@@ -2,8 +2,6 @@
   ul.ms-4.mt-5
     li
     li
-      a#active[href="/", class="#{request.path.include?("feeds") ? "active" :""}"]
-        | Feeds
+      = link_to "Feeds", root_path, class: "#{request.path.include?('feeds') ? 'active' :''}"
     li
-      a[href='/discover/photos', class="#{request.path.include?("discover") ? "active" :""}"]
-        | Discover
+      = link_to "Discover", discover_photos_path, class: "#{request.path.include?('discover') ? 'active' :''}"

@@ -17,3 +17,5 @@ nav.navbar.navbar-expand-lg.fw-bold
         a.text-white.text-decoration-none.ms-auto [href='/login'] Login 
       - else 
         = render 'layouts/profile_container'
+      / = link_to "Feeds", root_path
+      / = link_to "Discover", discover_photos_path

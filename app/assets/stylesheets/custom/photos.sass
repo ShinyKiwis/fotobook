@@ -28,3 +28,29 @@
   @media screen and (max-width: 768px)
     img
       height: 25em
+
+.photo-bottom
+  margin-top: 1em
+  span
+    color: $primary
+    font-weight: 500
+
+  span:first-of-type
+    & > img 
+      width: 1.2em
+      height: 1.2em
+      cursor: pointer
+
+  
+  span:last-of-type
+    color: #ccc
+    font-weight: 500
+    font-size: 0.9em
+@media screen and (min-width: 768px)
+  .card-body
+    height: 18vw !important
+
+@media screen and (max-width: 768px)
+  .card-body
+    height: 50vw !important
+

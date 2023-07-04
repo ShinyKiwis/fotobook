@@ -67,13 +67,30 @@ input[type="button"], button
   padding: 0
 
   span:first-of-type:not(:last-of-type)
-    color: $primary
+    color: $primary !important
     background-color: white
     border-radius: 50%
     padding: 0.4em
 
-  img
-    object-fit: cover
-    width: 2.5em 
-    height: 2.5em
+  img + span
+    color: white !important
+
+.user-container
+  margin-bottom: 0.2em
+  span:first-of-type:not(:last-of-type)
+    font-weight: bold;
+    padding: 0.4em
+    text-align: center
+    color: white 
+    background-color: $primary
     border-radius: 50%
+
+  span:last-of-type
+    color: $primary
+
+.avatar
+  object-fit: cover
+  width: 2.5em 
+  height: 2.5em
+  border-radius: 50%
+

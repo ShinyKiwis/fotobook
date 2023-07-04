@@ -1,2 +1,6 @@
-button.follow-btn
-  | follow
+- if false
+  button.follow-btn[style="#{style}"]
+    | follow
+- else 
+  button.following-btn[style="#{style}"]
+    | following

@@ -8,6 +8,8 @@ module ApplicationHelper
     end
   end
 
+
+
   def path(page_title, type, obj)
     if page_title.include?('feeds')
       type.downcase == 'photo' ? feeds_photos_path(obj) : feeds_albums_path(obj)

@@ -1,0 +1,10 @@
+- if notice || alert
+  div[data-controller="toast" data-toast-status-value="#{notice ? "success" : "alert"}"]
+    .custom-toast-container.position-fixed.p-0[data-turbo-temporary="false" data-toast-target="liveToast"]
+      .custom-toast
+        .toast-header
+          strong.me-auto
+            | Notifcation
+          button.btn-close[type="button" aria-label="Close" data-action="click->toast#hide"]
+        .toast-body
+            = notice || alert

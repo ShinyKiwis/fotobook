@@ -1,5 +1,5 @@
-- if false
+- if current_user && current_user.avatar_img.nil?
   span.me-2[style="#{!size.to_i.zero? ? "font-size: #{size.to_i/2}em": ''}"]
-    | NH
+    = get_short_username 
 - else
   = image_tag "avatar.jpeg", style: "width:#{size}em; height:#{size}em;", class: "me-2 avatar"

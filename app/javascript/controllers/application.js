@@ -1,4 +1,5 @@
 import { Application } from "@hotwired/stimulus"
+import ToastController from "./toast_controller.js"
 
 const application = Application.start()
 

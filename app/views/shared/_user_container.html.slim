@@ -2,5 +2,5 @@ div.d-flex.align-items-center
   = render 'shared/avatar', size: ''
   span.fs-5.fw-bold
     |  #{username}
-  = render('shared/follow_button', style: '')if request.path.include?("discover")
+  = render('shared/buttons/follow_button', style: '')if request.path.include?("discover")
  

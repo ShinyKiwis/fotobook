@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
   root "application#welcome"
+
+  devise_for :users,path_names: {
+    edit: ':id/edit'
+  }, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
+  # put 'users/basic_info', to: 'users/registrations#update_basic_info'
+
+
   resources :users
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: %i[new create destroy]
 
   scope :feeds, as: 'feeds', shallow_path: 'feeds' do
     resources :photos, :albums
@@ -11,6 +22,9 @@ Rails.application.routes.draw do
     resources :photos, :albums
   end
 
-  get 'signup', to: 'users#new'
-  get 'login', to: 'sessions#new'
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+    get 'signup', to: 'devise/registrations#new'
+  end
+
 end

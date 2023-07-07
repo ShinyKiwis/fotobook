@@ -1,0 +1,13 @@
+.custom-toast-container.position-fixed.p-0[data-turbo-temporary="false" data-toast-target="liveToast"]
+  - if resource.errors.any?
+    .custom-toast
+      .toast-header
+        strong.me-auto
+          | Notifcation
+        button.btn-close[type="button" aria-label="Close" data-action="click->toast#hide"]
+      .toast-body
+        - resource.errors.full_messages.each do |message|
+          li
+            = message
+
+

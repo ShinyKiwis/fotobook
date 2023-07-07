@@ -1,0 +1,38 @@
+.custom-toast-container
+  background-color: white
+  border-radius: 0.8em
+  z-index: 10
+
+@media screen and (min-width: 768px)
+  .custom-toast-container
+    bottom: 5%
+    right: 2%
+    width: 30em 
+
+@media screen and (max-width: 768px)
+  .custom-toast-container
+    top: 12%
+    right: 2%
+    width: 25em 
+
+.custom-toast
+
+  padding: 0.5em 1.8em !important
+  box-shadow: $toast-box-shadow
+  z-index: 100
+
+  .toast-header 
+    border-bottom: 2px solid #ccc
+
+    strong
+      color: #primary
+
+  .btn-close 
+    background-color: white !important
+    border: none !important
+    margin: 0 !important
+    padding: 0 !important
+
+  li 
+    text-align: left
+    list-style: none

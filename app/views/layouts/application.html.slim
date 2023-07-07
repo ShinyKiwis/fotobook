@@ -9,8 +9,9 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
+    = render 'layouts/alert'
     = render 'layouts/navbar'
-    - unless current_page?('/signup') || current_page?('/login') 
+    - unless current_page?(signup_path) || current_page?(login_path) || (request.path.in?([users_path, new_user_session_path]) && request.post?)
       .d-flex
         = render 'layouts/columns/left_col'
         = render 'layouts/columns/mid_col'

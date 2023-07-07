@@ -1,0 +1,37 @@
+.user-container.col-12.d-flex.mt-4.ms-5
+  div.pt-2
+    = render 'shared/avatar', size: "10" 
+    span
+  div.d-flex.flex-column.align-items-start.ms-3.pt-2
+    = render 'shared/buttons/edit_button', style: 'margin-left: 0 !important'
+    h2.fw-bold
+      = get_username
+    .d-flex.align-items-center.gap-2
+      .d-flex.align-items-center.gap-1.current-tab
+        h4.fw-bold
+          | 108
+        span.fw-bold
+          | PHOTOS
+      span.inactive-tab
+        | |
+      .d-flex.align-items-center.gap-1.inactive-tab
+        h4.fw-bold
+          | 43
+        span.fw-bold
+          | ALBUMS
+      span.inactive-tab
+        | |
+      .d-flex.align-items-center.gap-1.inactive-tab
+        h4.fw-bold
+          | 22
+        span.fw-bold
+          | FOLLOWINGS
+      span.inactive-tab
+        | |
+      .d-flex.align-items-center.gap-1.inactive-tab
+        h4.fw-bold
+          | 13
+        span.fw-bold
+          | FOLLOWERS
+
+

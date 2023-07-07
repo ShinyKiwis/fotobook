@@ -19,6 +19,10 @@
   height: 86vh
   border-radius: 0.8em !important
 
+  
+  h5:nth-child(n+2)
+    color: $primary
+
   .thumbnail-img
     cursor: pointer
 
@@ -31,6 +35,16 @@
     .thumbnail-img
       height: 100vw
       object-fit:cover
+
+  .edit-btn
+    a 
+      color: $primary !important
+
+    background-color: transparent
+    border-radius: 1.2em !important
+    padding: 0.2em 0.6em !important
+    margin: 0.2em !important
+    border: 2px solid $primary
 
   .follow-btn
     background: linear-gradient(white 0 0) padding-box, $follow-btn-background border-box 
@@ -53,28 +67,16 @@
     border-radius: 1em !important
     background-image: $follow-btn-background !important
 
-  #avatar
-    width: 10em
-    height: 10em
-    position: relative
-    background-position: center
-    background-image: url("../images/sample.png")
-
-  #avatar span 
-    position: absolute
-    left: 50%
-    transform: translate(-50%, 0)
-    width: fit-content
-    background-color: rgba(255,255,255,0.5)
-    padding: 0.3em 0.8em
-    border-radius: 0.4em
-    bottom: 10%
-    cursor: pointer
-    font-weight: 500
-
-
-  #avatar-edit
-    background-image: url("../images/sample.png")
+  // #avatar
+  //   width: 10em
+  //   height: 10em
+  //   position: relative
+  //   background-position: center
+  //   background-image: url("../images/sample.png")
+  //
+  //
+  // #avatar-edit
+  //   background-image: url("../images/sample.png")
 
   #photo-container
     margin-top: 1em
@@ -97,3 +99,29 @@
     form:nth-of-type(2)>button
       border-radius: 0 0.4em 0.4em 0 !important
 
+
+#avatar-container
+  display: flex
+  align-items: center
+  justify-content: center
+  background-color: $primary
+  width: 10em 
+  height: 10em
+  position: relative
+
+  span:first-of-type:not(:last-of-type)
+    font-weight: bold
+    font-size: 2em
+    color: white
+
+  & > span:last-of-type
+    position: absolute
+    left: 50%
+    transform: translate(-50%, 0)
+    width: fit-content
+    background-color: rgba(255,255,255,0.5)
+    padding: 0.3em 0.8em
+    border-radius: 0.4em
+    bottom: 10%
+    cursor: pointer
+    font-weight: 500

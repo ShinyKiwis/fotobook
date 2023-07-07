@@ -1,8 +1,8 @@
-ul.navbar-nav.ms-auto.d-flex.align-items-start
+ul.navbar-nav.ms-auto.d-flex
   li.nav-item
     #profile-container.nav-link.text-white
       = render 'shared/avatar', size: ''
       span.me-5[style="margin-top: 0.2em"]
-        = link_to "Nguyen Hua", users_path, class: "text-white"
+        = link_to get_username, user_path(current_user), class: "text-white"
   li.nav-item
-    = link_to "Logout", login_path, class: "nav-link text-white text-decoration-none"
+    = link_to "Logout", destroy_user_session_path , class: "nav-link text-white text-decoration-none", method: :delete

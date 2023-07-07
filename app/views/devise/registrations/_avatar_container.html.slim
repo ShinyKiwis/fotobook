@@ -1,0 +1,9 @@
+#avatar-container.mt-2.rounded
+  - if true 
+    span
+      = get_short_username
+  span[onclick="document.getElementById('photoChange').click()"]
+    | CHANGE
+  input#photoChange.d-none[type="file"]
+
+

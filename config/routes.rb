@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   # put 'users/basic_info', to: 'users/registrations#update_basic_info'
 
 
-  resources :users
+  resources :users do
+    resources :photos
+  end
   resource :session, only: %i[new create destroy]
 
   scope :feeds, as: 'feeds', shallow_path: 'feeds' do

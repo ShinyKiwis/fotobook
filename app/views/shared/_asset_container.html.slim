@@ -1,0 +1,5 @@
+- provide(:title, "#{mode.capitalize}s")
+= render "shared/gallery_switch", mode: "photo"
+#asset-container.w-100
+  .row.row-cols-2
+    = yield

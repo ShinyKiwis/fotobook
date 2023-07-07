@@ -1,0 +1,5 @@
+.d-flex.align-items-center.gap-1[class="#{request.path.include?(element_type.downcase) ? "current-tab": "inactive-tab"}"]
+  h4.fw-bold
+    = number_of_elements
+  span.fw-bold
+    = element_type

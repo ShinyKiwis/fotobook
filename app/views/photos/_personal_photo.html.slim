@@ -1,0 +1,10 @@
+.personal-photo.d-flex.flex-column.align-items-center.col-3.gy-2
+  .utils.position-relative[style="width: 15em; height: 15em"]
+    - if true
+      span.position-absolute        
+        i.fa-solid.fa-lock
+    = image_tag "sample.png", style: "width: 100%; height: auto;"
+    span.position-absolute     
+      | EDIT
+  span
+    | Photo title goes here

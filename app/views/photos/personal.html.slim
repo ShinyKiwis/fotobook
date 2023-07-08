@@ -1,1 +1,13 @@
-= render 'users/user_information'
+.container
+  = render 'users/user_information'
+  .w-100.d-flex.flex-column
+    div.align-self-end
+      = link_to "Add Photo", new_user_photo_path, class: 'text-white float-right bg-success rounded fw-bold p-2'
+    .personal-photo-container.row.row-cols-4.mt-4
+      = render "personal_photo"
+      = render "personal_photo"
+      = render "personal_photo"
+      = render "personal_photo"
+      = render "personal_photo"
+      = render "personal_photo"
+      = render "personal_photo"

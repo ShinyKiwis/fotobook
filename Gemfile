@@ -86,3 +86,5 @@ group :test do
 end
 
 gem 'devise'
+gem 'carrierwave'
+gem 'pry'

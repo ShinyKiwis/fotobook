@@ -1,9 +1,10 @@
 module UsersHelper
-  def get_username
-    "#{current_user.first_name} #{current_user.last_name}"
+  def get_username(user)
+    "#{user.first_name} #{user.last_name}"
   end
 
-  def get_short_username
-    "#{current_user.first_name[0].upcase}#{current_user.last_name[0].upcase}"
+  def get_short_username(user)
+    "#{user.first_name[0].upcase}#{user.last_name[0].upcase}"
   end
+
 end

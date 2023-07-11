@@ -1,0 +1,31 @@
+.container
+  .d-flex.justify-content-between.align-items-center
+    h5.fw-bold.mx-2
+      | Edit Photo
+    button[style="padding: 0.4em 0.8em !important; margin: 0.2em !important;"]
+      = link_to "Back", :back, class: "text-white"
+  = form_with model: @photo, url: user_photo_path(@photo) , class: "row border-2 border-top pt-4" do |f|
+    .col-12.col-md-6
+      label.fw-bold.mb-2.text-dark[for="title"]
+        | Title
+      = f.text_field :title, class: "form-control mb-4", placeholder: @photo.title, id: "title"
+      label.fw-bold.mb-2.text-dark
+        | Sharing mode
+      = select_tag "photo[sharing_mode]", options_for_select([["Public", "public"], ["Private", "private"]], @photo.sharing_mode), class: "form-select fw-bold text-dark", aria: { label: "Select sharing mode" }
+    .col-12.col-md-6
+      label.fw-bold.mb-2.text-dark[for="title"]
+        | Description
+      = f.text_area :description, class: "col-12 form-control", placeholder: @photo.description, style: "height: 8.2em;"
+    .mt-4.d-flex.flex-column.col-12[data-controller='photo']
+      .col-2.d-flex.flex-column.d-none#upload-button[type="button" value=" " onclick="document.getElementById('thumbnail_img').click()"]
+        i.fa-solid.fa-plus style="color: #BDBDBD; font-size: 2em"
+      = f.file_field :thumbnail_img, class: "form-control d-none", id: "thumbnail_img", data: { action: "change->photo#change_photo", photo_target: "photo" }
+      div#uploaded-photo-container.position-relative[style="width: 15em; height: 15em;"]
+        span.position-absolute[style="top: 2%; right: 4%; cursor: pointer;" data-action="click->photo#remove_photo"]
+          i.fa-solid.fa-xmark
+        = image_tag @photo.thumbnail_img.url, id: "uploaded-photo", class: "w-100 h-100", data: { photo_target: "uploadedPhoto" }, style: "border-radius: 0.8em"
+
+    .col-6.col-md-4.d-flex.justify-content-between
+      = f.submit "Save", class: "col-4 col-md-2 bg-success border-success w-50", style: "padding: 0.8em 0.6em !important; margin-right: 2em !important", name: 'save'
+      = f.submit "Delete", class: "col-4 col-md-2 bg-danger border-danger w-50", style: "padding: 0.8em 0.6em !important;", name: 'delete'
+

@@ -1,21 +1,21 @@
 .custom-card.col-12.col-md-6[style="max-width: 540px;"]
   .card.mb-3
     .row.g-0.
-      .col-md-6[data-bs-toggle="modal" data-bs-target="#photoModal"]
-        = image_tag "#{img_url}", class: "w-100 rounded-start thumbnail-img"
+      .col-md-6[data-bs-toggle="modal" data-bs-target="#photoModal-#{photo.id}"]
+        = image_tag photo.thumbnail_img.url, class: "w-100 rounded-start thumbnail-img"
       .col-md-6
         div
           .card-body.custom-card-body.d-flex.flex-column
             .user-container
-              = render 'shared/user_container', username: 'Nguyen Hua'
+              = render 'shared/user_container', user: get_photo_owner(photo)
             h5.card-title.fw-bold
-              | Nam tempor posure
+              | #{photo.title}
             p.card-text
-              | lorem ipsum asd asd asdk laksdkqwlkd lasldk las Some quick example text to basdasdasduild on the card title aasdasdasdnd ma ke up the bulk of the card's content.
+              | #{photo.description}
             .mt-auto.d-flex.align-items-center.photo-bottom
               span.d-flex.gap-2.align-items-center[style="cursor:pointer;"]
                 = render 'shared/heart'
-                |  123 
+                | #{photo.like_count} 
               span.ms-auto.text-center
-                | 4:56 pm 18/06/2023
-  = render 'photos/modal', img_url: "#{img_url}"
+                = photo.created_at.in_time_zone("Asia/Ho_Chi_Minh").strftime("%H:%M %P %d/%m/%Y")
+  = render 'photos/modal', photo: photo

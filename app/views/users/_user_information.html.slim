@@ -1,19 +1,22 @@
 .user-container.col-12.d-flex.mt-4.ms-5
   div.pt-2
-    = render 'shared/avatar', size: "10" 
+    = render 'shared/avatar', size: "10", user: user
     span
   div.d-flex.flex-column.align-items-start.ms-3.pt-2
-    = render 'shared/buttons/edit_button', style: 'margin-left: 0 !important'
+    - if user.id == current_user.id
+      = render 'shared/buttons/edit_button', style: 'margin-left: 0 !important'
+    - else 
+      = render 'shared/buttons/follow_button', style: ''
     h2.fw-bold
-      = get_username
+      = get_username(user)
     .d-flex.align-items-center.gap-2
-      = render 'users/tab', number_of_elements: "108", element_type: "PHOTOS"
+      = render 'users/tab', number_of_elements: user.photos.count, element_type: "PHOTOS"
       span.inactive-tab
         | |
-      = render 'users/tab', number_of_elements: "43", element_type: "ALBUMS"
+      = render 'users/tab', number_of_elements: user.albums.count, element_type: "ALBUMS"
       span.inactive-tab
         | |
-      = render 'users/tab', number_of_elements: "22", element_type: "FOLLOWINGS"
+      = render 'users/tab', number_of_elements: user.followees.count, element_type: "FOLLOWINGS"
       span.inactive-tab
         | |
-      = render 'users/tab', number_of_elements: "13", element_type: "FOLLOWERS"
+      = render 'users/tab', number_of_elements: user.followers.count, element_type: "FOLLOWERS"

@@ -1,11 +1,11 @@
-#photoModal.modal[tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true"]
-  .modal-dialog.modal-dialog-centered.modal-lg.h-75
-    .modal-content
-      .modal-header
-        h1#photoModalLabel.modal-title.fs-5
-          | Nam tempor posure
-        button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close" style="background-color:transparent; border:none"]
-      .modal-body.d-flex.justify-content-center
-        = image_tag "#{img_url}"
-      .modal-footer
-         lorem ipsum asd asd asdk laksdkqwlkd lasldk las Some quick example text to basdasdasduild on the card title aasdasdasdnd ma ke up the bulk of the card's content.
+.photo-modal.modal[tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true", id="photoModal-#{photo.id}"]
+ .modal-dialog.modal-dialog-centered.modal-lg.h-75
+   .modal-content
+     .modal-header
+       h1#photoModalLabel.modal-title.fs-5
+         = photo.title
+       button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close" style="background-color:transparent; border:none"]
+     .modal-body.d-flex.justify-content-center
+       = image_tag photo.thumbnail_img.url
+     .modal-footer
+       = photo.description

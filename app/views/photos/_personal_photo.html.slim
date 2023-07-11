@@ -1,10 +1,12 @@
 .personal-photo.d-flex.flex-column.align-items-center.col-3.gy-2
   .utils.position-relative[style="width: 15em; height: 15em"]
-    - if true
+    - if photo.sharing_mode == 'private'
       span.position-absolute        
         i.fa-solid.fa-lock
-    = image_tag "sample.png", style: "width: 100%; height: auto;"
-    span.position-absolute     
-      | EDIT
+    = image_tag photo.thumbnail_img.url, style: "width: 100%; height: 100%;", 
+      data: {bs_toggle: "modal", bs_target: "#photoModal-#{photo.id}"}
+    span.position-absolute[style="cursor:pointer;" data-bs-toggle="modal-ignore"]
+      - if params[:user_id] == current_user.id.to_s
+        = link_to "EDIT", edit_user_photo_path(current_user.id,photo.id), class: "text-white"
   span
-    | Photo title goes here
+    = photo.title

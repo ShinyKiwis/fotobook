@@ -1,10 +1,13 @@
 = render "shared/asset_container", mode: "photo"
-  = render 'photos/photo', img_url: "sample.png"
-  = render 'photos/photo', img_url: "avatar.jpeg"
-  = render 'photos/photo', img_url: "sample.png"
-  = render 'photos/photo', img_url: "sample.png"
-  = render 'photos/photo', img_url: "sample.png"
-  = render 'photos/photo', img_url: "sample.png"
-  = render 'photos/photo', img_url: "sample.png"
-  = render 'photos/photo', img_url: "sample.png"
-  = render 'photos/photo', img_url: "sample.png"
+  - @photos.each do |photo|
+    = render 'photos/photo', photo: photo
+
+  / = render 'photos/photo', img_url: "sample.png"
+  / = render 'photos/photo', img_url: "avatar.jpeg"
+  / = render 'photos/photo', img_url: "sample.png"
+  / = render 'photos/photo', img_url: "sample.png"
+  / = render 'photos/photo', img_url: "sample.png"
+  / = render 'photos/photo', img_url: "sample.png"
+  / = render 'photos/photo', img_url: "sample.png"
+  / = render 'photos/photo', img_url: "sample.png"
+  / = render 'photos/photo', img_url: "sample.png"

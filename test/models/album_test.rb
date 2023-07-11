@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: albums
+#
+#  id               :bigint           not null, primary key
+#  title            :string
+#  description      :string
+#  thumbnail_img    :string
+#  like_count       :integer          default(0)
+#  sharing_mode     :string           default("public")
+#  publication_date :datetime
+#  user_id          :bigint           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
 require "test_helper"
 
 class AlbumTest < ActiveSupport::TestCase

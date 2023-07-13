@@ -1,0 +1,18 @@
+.personal-photo.d-flex.flex-column.align-items-center.col-3.gy-2
+  .utils.position-relative.d-flex.flex-column.align-items-center.justify-content-center[style="width: 15em; height: 15em"]
+    - if album.sharing_mode == 'private'
+      span.position-absolute[style="z-index: 1; right: 8%; top: 6%"]
+        i.fa-solid.fa-lock
+
+    .album-cover.position-absolute[style="z-index: 0;"]
+      - 3.times do 
+        = image_tag album.photos[0].url, style: "width: 14em; height: 14em;", data: {bs_toggle: "modal", bs_target: "#albumModal-#{album.id}"}
+    p[style="z-index: 4;" data-bs-toggle="modal" data-bs-target = "#albumModal-#{album.id}"]
+      = album.photos.length
+    / = image_tag photo.thumbnail_img.url, style: "width: 100%; height: 100%;", 
+      data: {bs_toggle: "modal", bs_target: "#photoModal-#{photo.id}"}
+    span.position-absolute[style="cursor:pointer; bottom: 10% ; right: 8%" data-bs-toggle="modal-ignore"]
+      - if current_user && params[:user_id] == current_user.id.to_s
+        = link_to "EDIT", edit_user_album_path(current_user.id,album.id), class: "text-white"
+  span.mt-3
+    = album.title

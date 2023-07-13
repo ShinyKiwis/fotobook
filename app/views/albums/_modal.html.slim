@@ -1,12 +1,11 @@
-#albumModal.modal[tabindex="-1" aria-labelledby="albumModalLabel" aria-hidden="true"]
+.album-modal.modal[tabindex="-1" aria-labelledby="albumModalLabel" aria-hidden="true" id="albumModal-#{album.id}"]
   .modal-dialog.modal-dialog-centered.modal-lg.h-75
     .modal-content
       .modal-header
-        h1#albumModalLabel.modal-title.fs-5
-          | Nam tempor posure
+        h1.modal-title.fs-5[id="albumModal-#{album.id}"]
+          = album.title
         button.btn-close[type="button" data-bs-dismiss="modal" aria-label="Close" style="background-color:transparent; border:none"]
-      .modal-body.d-flex.justify-content-center
-        = render 'albums/carousel'
+      .modal-body
+        = render 'albums/carousel', album: album
       .modal-footer
-         lorem ipsum asd asd asdk laksdkqwlkd lasldk las Some quick example text to basdasdasduild on the card title aasdasdasdnd ma ke up the bulk of the card's content.
-
+        = album.description

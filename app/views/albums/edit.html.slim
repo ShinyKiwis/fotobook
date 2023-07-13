@@ -1,0 +1,59 @@
+.container
+  .d-flex.justify-content-between.align-items-center
+    h5.fw-bold.mx-2
+      | Edit Album
+    button[style="padding: 0.4em 0.8em !important; margin: 0.2em !important;"]
+      = link_to "Back", :back, class: "text-white"
+  = form_with model: @album, url: user_album_path(@album), class: 'row border-2 border-top w-100 pt-2', multipart: true do |f|
+    .col-12.col-md-6
+      label.fw-bold.mb-2.text-dark for="album_title" 
+        | Title
+      = f.text_field :title,id: "album_title", class: 'form-control mb-4', placeholder: 'Album Title'  
+
+      label.fw-bold.mb-2.text-dark 
+        | Sharing mode
+      = select_tag "album[sharing_mode]", options_for_select([["Public", "public"], ["Private", "private"]], @album.sharing_mode), class: "form-select fw-bold text-dark-emphasis mb-4", aria: { label: "Select sharing mode" }, style: "width: 15em"
+
+    .col-12.col-md-6
+      label.fw-bold.mb-2.text-dark for="album_description"
+        | Description
+      = f.text_area :description, id: "album_description", class: 'col-12 form-control', placeholder: 'Album Description', style: 'height: 8.2em; resize: none;'
+
+    .mt-4.d-flex.flex-column.col-12[data-controller='album' data-album-existed-photos="#{@album_photos_urls}"]
+      .d-flex.overflow-x-auto.gap-2#album-photo-container
+        div.uploaded-photo-container.d-none.position-relative[style="width: 15em; height: 15em;"]
+          span.position-absolute[style="top: 2%; right: 4%; cursor: pointer;" data-action="click->album#remove_photo"]
+            i.fa-solid.fa-xmark
+          img[data-album-target="uploadedPhoto" style="border-radius: 0.8em; width: 15em; height: 15em"]
+        / - @album.photos.each do |photo|
+        /   = hidden_field :album, :photos, multiple: true, value: photo.identifier
+
+        .col-6.d-flex.flex-column#upload-button[type="button" value=" " onclick="document.getElementById('album_photos').click()"]
+          i.fa-solid.fa-plus style="color: #BDBDBD; font-size: 2em"
+          = f.file_field :photos, id:'album_photos', class: 'form-control d-none', data: {action: "change->album#change_photo", album_target: 'photo'}, multiple: true, include_hidden: false
+
+        - @album.photos.each do |photo|
+          div.uploaded-photo-container.position-relative[style="width: 15em; height: 15em;"]
+             span.position-absolute[style="top: 2%; right: 4%; cursor: pointer;" data-action="click->album#remove_photo"]
+               i.fa-solid.fa-xmark
+             img[src="#{photo.url}" data-album-target="uploadedPhoto" style="border-radius: 0.8em; width: 15em; height: 15em"]
+
+      .col-6.col-md-4.d-flex.justify-content-between
+        = f.submit "Save", class: "col-4 col-md-2 bg-success border-success w-50", style: "padding: 0.8em 0.6em !important; margin-right: 2em !important", name: 'save'
+        = f.button "Delete", type: 'button', class: "col-4 col-md-2 bg-danger border-danger w-50", style: "padding: 0.8em 0.6em !important;", name: 'delete', data: {bs_target: '#staticBackdrop', bs_toggle: 'modal'}
+
+        = f.submit 'Delete', class: 'd-none', name: 'delete', id: 'delete-btn'
+
+        #staticBackdrop.modal.fade[data-controller='album' data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"]
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h1#staticBackdropLabel.modal-title.fs-5
+                  | Deletion Confirmation 
+              .modal-body
+                |  Are you sure you want to delete this album ?
+              .modal-footer
+                button.bg-success[type="button" data-bs-dismiss="modal"]
+                  | Cancel
+                button.bg-danger[type="button" data-action="click->album#delete"]
+                  | Yes 

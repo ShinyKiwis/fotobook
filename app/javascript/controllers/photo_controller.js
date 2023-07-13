@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.uploadButton = document.getElementById('upload-button')
-    this.uploadedPhotoContainer = document.getElementById('uploaded-photo-container')
+    this.uploadedPhotoContainer = document.getElementsByClassName('uploaded-photo-container')[0]
   }
 
   async getBase64(file) {

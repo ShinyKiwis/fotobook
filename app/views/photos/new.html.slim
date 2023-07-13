@@ -18,7 +18,7 @@
         i.fa-solid.fa-plus style="color: #BDBDBD; font-size: 2em"
         = f.file_field :thumbnail_img, class: 'form-control d-none', data: {action: "change->photo#change_photo", photo_target: 'photo'}
 
-      div#uploaded-photo-container.d-none.position-relative[style="width: 15em; height: 15em;"]
+      div.uploaded-photo-container.d-none.position-relative[style="width: 15em; height: 15em;"]
         span.position-absolute[style="top: 2%; right: 4%; cursor: pointer;" data-action="click->photo#remove_photo"]
           i.fa-solid.fa-xmark
         img#uploaded-photo.w-100.h-100[data-photo-target="uploadedPhoto" style="border-radius: 0.8em"]

@@ -6,7 +6,7 @@
     = image_tag photo.thumbnail_img.url, style: "width: 100%; height: 100%;", 
       data: {bs_toggle: "modal", bs_target: "#photoModal-#{photo.id}"}
     span.position-absolute[style="cursor:pointer;" data-bs-toggle="modal-ignore"]
-      - if params[:user_id] == current_user.id.to_s
+      - if current_user && params[:user_id] == current_user.id.to_s
         = link_to "EDIT", edit_user_photo_path(current_user.id,photo.id), class: "text-white"
   span
     = photo.title

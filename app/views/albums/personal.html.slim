@@ -1,0 +1,9 @@
+.container
+  = render 'users/user_information', user: @user
+  .w-100.d-flex.flex-column
+    div.align-self-end
+      = link_to "Add Album", new_user_album_path, class: 'text-white float-right bg-success rounded fw-bold p-2' if @user.id == current_user.id
+    .personal-photo-container.row.row-cols-4.mt-4
+      - @albums.each do |album|
+        = render 'personal_album', album: album 
+        = render 'albums/modal', album:album

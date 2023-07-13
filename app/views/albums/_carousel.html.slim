@@ -1,16 +1,15 @@
-#carouselAlbum.carousel.slide
-  .carousel-inner
+.carousel.slide[id="carouselAlbum-#{album.id}"]
+  .carousel-inner.photo-modal
     .carousel-item.active
-      = image_tag "sample.png"
-    .carousel-item
-      = image_tag "sample.png"
-    .carousel-item
-      = image_tag "sample.png"
-  button.carousel-control-prev[type="button" data-bs-target="#carouselAlbum" data-bs-slide="prev"]
+      = image_tag album.photos[0].url
+    - album.photos[1..-1].each do |photo|
+      .carousel-item
+        = image_tag photo.url
+  button.carousel-control-prev[type="button" data-bs-target="#carouselAlbum-#{album.id}" data-bs-slide="prev"]
     span.carousel-control-prev-icon[aria-hidden="true"]
     span.visually-hidden
       | Previous
-  button.carousel-control-next[type="button" data-bs-target="#carouselAlbum" data-bs-slide="next"]
+  button.carousel-control-next[type="button" data-bs-target="#carouselAlbum-#{album.id}" data-bs-slide="next"]
     span.carousel-control-next-icon[aria-hidden="true"]
     span.visually-hidden
       | Next

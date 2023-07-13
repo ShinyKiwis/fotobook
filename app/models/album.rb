@@ -5,15 +5,16 @@
 #  id               :bigint           not null, primary key
 #  title            :string
 #  description      :string
-#  thumbnail_img    :string
 #  like_count       :integer          default(0)
 #  sharing_mode     :string           default("public")
 #  publication_date :datetime
 #  user_id          :bigint           not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  photos           :json
 #
 class Album < ApplicationRecord
+  mount_uploaders :photos, PhotoUploader
   belongs_to :user
   has_many :photos
   has_many :liked_albums

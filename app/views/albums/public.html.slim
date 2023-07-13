@@ -1,0 +1,7 @@
+- provide(:title, "Albums")
+= render "shared/gallery_switch", mode: "album"
+#asset-container.w-100
+  .row.row-cols-2
+    - @albums.each do |album|
+      = render 'albums/album', album: album
+

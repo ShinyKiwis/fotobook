@@ -14,6 +14,14 @@ module Fotobook
     config.sass.preferred_syntax = :sass
     config.sass.line_comments = false
     config.sass.cache = false
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*' # Replace with your actual domain
+        resource '*', headers: :any, methods: [:get, :post, :patch, :put, :delete], expose: ['Access-Control-Allow-Origin']
+      end
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -1,6 +1,7 @@
 require 'pry'
 
 class PhotosController < ApplicationController
+
   def index
     if request.path.include?("feeds") || request.path.include?("discover")
       @photos = []
@@ -10,11 +11,16 @@ class PhotosController < ApplicationController
       end
       render 'public'
     else
-      @user = params[:user_id] == current_user.id ? current_user : User.find(params[:user_id])
       @photos = []
-      if @user.id == current_user.id
-        @photos.concat(@user.photos)
+      if current_user
+        @user = params[:user_id] == current_user.id ? current_user : User.find(params[:user_id])
+        if @user.id == current_user.id
+          @photos.concat(@user.photos)
+        else
+          @photos = Photo.where(user_id: @user.id, sharing_mode: 'public')
+        end
       else
+        @user = User.find(params[:user_id])
         @photos = Photo.where(user_id: @user.id, sharing_mode: 'public')
       end
       render 'personal'
@@ -40,6 +46,7 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
+    binding.pry
     if params[:save].present?
       @photo.update(photo_params)
     elsif params[:delete].present?

@@ -21,7 +21,7 @@
 .album-frame
   height: 16em
 
-#albumModal
+.album-modal
   @media screen and (min-width: 768px)
     .carousel
       width: 100%
@@ -44,6 +44,10 @@
     border-bottom: none
     padding-bottom: 0
 
+    .btn-close
+      margin: 0 !important
+      padding: 0.5em !important
+
   .modal-footer
     border-top: none 
     padding-top: 0
@@ -55,8 +59,8 @@
 
     button 
       padding: 0 !important
-      background-color: transparent
-      border: none
+      background-color: transparent !important
+      border: none !important
 
   .carousel-inner
     height: 100%

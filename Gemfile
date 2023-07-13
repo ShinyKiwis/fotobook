@@ -88,4 +88,8 @@ end
 
 gem 'devise'
 gem 'carrierwave'
+gem 'fog-aws'
+
 gem 'pry'
+gem 'dotenv-rails'
+gem 'rack-cors', :require => 'rack/cors'

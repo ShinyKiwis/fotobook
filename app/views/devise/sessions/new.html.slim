@@ -11,5 +11,5 @@ div.col-sm-3.mt-6.mx-auto.text-center.px-2.px-md-0.custom-card
           = f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control py-2", aria_label: "Email"
           = f.password_field :password, type:'password', placeholder: "Password", class: "form-control py-2", aria_label: "Password"
         = f.submit "Log in"
-      = link_to "Forgot password ?", "#"
+      = link_to "Forgot password ?", password_reset_path
   = link_to "Create an account", signup_path

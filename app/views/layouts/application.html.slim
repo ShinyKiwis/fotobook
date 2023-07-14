@@ -11,7 +11,7 @@ html
   body
     = render 'layouts/alert'
     = render 'layouts/navbar'
-    - unless current_page?(signup_path) || current_page?(login_path) || (request.path.in?([users_path, new_user_session_path]) && request.post?)
+    - if full_layout?
       .d-flex.overflow-hidden
         = render 'layouts/columns/left_col'
         = render 'layouts/columns/mid_col'

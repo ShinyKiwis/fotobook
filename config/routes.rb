@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :photos, :albums
   end
 
+  get 'password/reset', to: 'password_resets#new'
+  post 'password/reset', to: 'password_resets#reset'
+
   resource :session, only: %i[new create destroy]
 
   scope :feeds, as: 'feeds', shallow_path: 'feeds' do

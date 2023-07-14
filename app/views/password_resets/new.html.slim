@@ -1,0 +1,10 @@
+#password-reset-container.card.mb-3.mx-auto.mt-5.px-5
+  .card-body.text-center
+    h3.card-title
+      | Password Reset
+    = form_with url: password_reset_path do |f|
+      .field.d-flex.flex-column.gap-2.mb-2
+        = f.label :email, class: 'fw-bold align-self-start'
+        = f.email_field :email, placeholder: 'Your email address'
+      .actions
+        = f.submit 'Reset Password'

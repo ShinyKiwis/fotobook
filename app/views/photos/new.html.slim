@@ -16,7 +16,7 @@
     .mt-4.d-flex.flex-column.col-12[data-controller='photo']
       .col-6.d-flex.flex-column#upload-button[type="button" value=" " onclick="document.getElementById('thumbnail_img').click()"]
         i.fa-solid.fa-plus style="color: #BDBDBD; font-size: 2em"
-        = f.file_field :thumbnail_img, class: 'form-control d-none', data: {action: "change->photo#change_photo", photo_target: 'photo'}
+        = f.file_field :thumbnail_img, accept: ".jpeg, .png, .gif", class: 'form-control d-none', data: {action: "change->photo#change_photo", photo_target: 'photo'}
 
       div.uploaded-photo-container.d-none.position-relative[style="width: 15em; height: 15em;"]
         span.position-absolute[style="top: 2%; right: 4%; cursor: pointer;" data-action="click->photo#remove_photo"]

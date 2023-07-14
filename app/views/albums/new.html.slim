@@ -22,9 +22,7 @@
 
         .col-6.d-flex.flex-column#upload-button[type="button" value=" " onclick="document.getElementById('album_photos').click()"]
           i.fa-solid.fa-plus style="color: #BDBDBD; font-size: 2em"
-          = f.file_field "album[photos]", id:'album_photos', class: 'form-control d-none', data: {action: "change->album#change_photo", album_target: 'photo'}, multiple: true, include_hidden: false
+          = f.file_field "album[photos]", accept:'.jpeg, .png, .gif', id:'album_photos', class: 'form-control d-none', data: {action: "change->album#change_photo", album_target: 'photo'}, multiple: true, include_hidden: false
 
       .col-12.col-md-6
         = f.submit 'Create', class: 'col-4 col-md-3 bg-success border-success', style: 'padding: 0.2em 0.4em !important'
-
-   

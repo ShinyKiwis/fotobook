@@ -4,6 +4,7 @@ export default class extends Controller {
   static targets = ['photo', 'uploadedPhoto']
 
   connect() {
+    this.oneMB = 1048576
     this.uploadButton = document.getElementById('upload-button')
     this.uploadedPhotoContainer = document.getElementsByClassName('uploaded-photo-container')[0]
   }
@@ -25,13 +26,17 @@ export default class extends Controller {
   
   async change_photo() {
     try {
-      const base64Result = await this.getBase64(this.photoTarget.files[0]);
-      // Render new image
-      this.uploadedPhotoContainer.classList.remove('d-none')
-      this.uploadedPhotoTarget.src = base64Result
-
-      // Hide old button
-      this.uploadButton.classList.add('d-none')
+      if(this.photoTarget.files[0].size > this.oneMB * 5){
+        alert("File is too big!")
+      }else{
+        const base64Result = await this.getBase64(this.photoTarget.files[0]);
+        // Render new image
+        this.uploadedPhotoContainer.classList.remove('d-none')
+        this.uploadedPhotoTarget.src = base64Result
+        
+        // Hide old button
+        this.uploadButton.classList.add('d-none')
+      }
     } catch (error) {
       console.log("Error: ", error);
     }

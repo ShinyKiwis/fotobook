@@ -28,6 +28,7 @@ export default class extends Controller {
   }
 
   connect() {
+    this.oneMB = 1048576
     // Keep track of UI elements
     this.albumPhotos = new Map()
 
@@ -85,29 +86,35 @@ export default class extends Controller {
   
   async change_photo() {
     try {
-      console.log("BEFORE: ", this.photoTarget.files)
-      Array.from(this.photoTarget.files).forEach(file => {
-        this.dt.items.add(file)
-      })
-      const tempFiles = this.photoTarget.files
-      this.photoTarget.files = this.dt.files
-      Array.from(tempFiles).forEach(async file => {
-        console.log("HERE")
-        const base64Result = await this.getBase64(file);
-        const newPhotoContainer = this.generatePhoto(base64Result)
+      if(this.photoTarget.files[0].size > this.oneMB * 5) {
+        alert('File is too large!')
+      }else if(this.dt.items.length + 1 > 25){
+        alert('Album can contains only 25 images')
+      }else{
+        console.log("BEFORE: ", this.photoTarget.files)
+        Array.from(this.photoTarget.files).forEach(file => {
+          this.dt.items.add(file)
+        })
+        const tempFiles = this.photoTarget.files
+        this.photoTarget.files = this.dt.files
+        Array.from(tempFiles).forEach(async file => {
+          console.log("HERE")
+          const base64Result = await this.getBase64(file);
+          const newPhotoContainer = this.generatePhoto(base64Result)
 
-        this.albumPhotos.set(this.albumPhotos.size, newPhotoContainer)
-        this.filesHash.set(this.albumPhotos.size-1, file)
-        console.log(this.filesHash)
-        // Render new images
-        if(this.albumPhotos.size === 0){
-          this.albumPhotoContainer.appendChild(newPhotoContainer)
-        }else {
-          this.albumPhotos.forEach((photo,_) => {
-            this.albumPhotoContainer.appendChild(photo)
-          })
-        }
-      })
+          this.albumPhotos.set(this.albumPhotos.size, newPhotoContainer)
+          this.filesHash.set(this.albumPhotos.size-1, file)
+          console.log(this.filesHash)
+          // Render new images
+          if(this.albumPhotos.size === 0){
+            this.albumPhotoContainer.appendChild(newPhotoContainer)
+          }else {
+            this.albumPhotos.forEach((photo,_) => {
+              this.albumPhotoContainer.appendChild(photo)
+            })
+          }
+        })
+      }
     } catch (error) {
       console.log("Error: ", error);
     }

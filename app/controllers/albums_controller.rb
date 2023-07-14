@@ -32,6 +32,7 @@ class AlbumsController < ApplicationController
     album = current_user.albums.build(album_params)
     if album.save
       redirect_to user_albums_path(current_user)
+      flash[:notice] = 'Album created successfully'
     else
       puts "ERROR"
     end
@@ -46,8 +47,10 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     if params[:save].present?
       @album.update(album_params)
+      flash[:notice] = 'Album updated successfully'
     elsif params[:delete].present?
       @album.destroy
+      flash[:notice] = 'Album deleted successfully'
     end
     redirect_to user_albums_path(current_user)
   end

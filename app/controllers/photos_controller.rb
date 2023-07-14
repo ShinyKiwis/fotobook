@@ -31,6 +31,7 @@ class PhotosController < ApplicationController
     photo = current_user.photos.build(photo_params)
     photo.thumbnail_img = params[:thumbnail_img]
     if photo.save
+      flash[:notice] = 'Photo created successfully'
       redirect_to user_photos_path(current_user)
     else
       puts "ERROR"
@@ -46,11 +47,12 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:id])
-    binding.pry
     if params[:save].present?
       @photo.update(photo_params)
+      flash[:notice] = 'Photo updated successfully'
     elsif params[:delete].present?
       @photo.destroy
+      flash[:notice] = 'Photo deleted successfully'
     end
     redirect_to user_photos_path(current_user)
   end

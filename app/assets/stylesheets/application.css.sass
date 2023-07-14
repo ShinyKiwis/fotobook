@@ -93,6 +93,18 @@ input[type="button"], button
   img + span
     color: white !important
 
+@media screen and (min-width: 768px)
+  .user-container
+    margin-bottom: 0.4em !important
+  .tabs-select
+    display: none
+
+@media screen and (max-width: 768px)
+  .tabs
+    display: none !important
+  .user-container
+    margin-left: 0 !important
+
 .user-container
   margin-bottom: 0.2em
 
@@ -113,7 +125,6 @@ input[type="button"], button
   span:last-of-type
     color: $primary
 
-  border-radiu
 .avatar
   object-fit: cover
   width: 2.5em 
@@ -147,3 +158,16 @@ input[type="button"], button
     margin: 0.5em !important
     padding: 0.4em 0.6em !important
     border: none
+
+.tabs-select
+  background-color: $primary
+  text-align: center
+  color: white
+  font-weight: bold
+  font-size: 1em
+  padding: 0.4em 0.8em
+  border-radius: 0.6em
+  border: none
+
+  option
+    width: fit-content

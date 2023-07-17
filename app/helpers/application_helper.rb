@@ -18,6 +18,6 @@ module ApplicationHelper
 
   def full_layout?
     return false if request.path.include?('login') || request.path.include?('signup') || request.path.include?('password')
-    request.path.include?('photo') || request.path.include?('album') || current_page?(edit_user_registration_path)
+    request.path.include?('photo') || request.path.include?('album')
   end
 end

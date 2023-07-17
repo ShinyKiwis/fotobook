@@ -32,9 +32,24 @@ class User < ApplicationRecord
   has_many :albums
   has_many :photos
 
+  has_many :liked_photos, dependent: :destroy
+  has_many :like_photos, through: :liked_photos, source: :photo
+
   validates :first_name, length: { maximum: 25 }, presence: true
   validates :last_name, length: { maximum: 25 }, presence: true
   validates :email, length: { maximum: 255 }, presence: true,
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :password, length: { maximum: 64 }
+
+  def liked?(photo)
+    like_photos.include?(photo)
+  end
+
+  def like(photo)
+    if liked?(photo)
+      like_photos.destroy(photo)
+    else
+      like_photos << photo
+    end
+  end
 end

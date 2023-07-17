@@ -19,7 +19,9 @@ class Photo < ApplicationRecord
 
   belongs_to :user
   belongs_to :album, optional: true
-  has_many :liked_photos
+
+  has_many :liked_photos, dependent: :destroy
+  has_many :likes, through: :liked_photos, source: :user
 
   validates :title, length: { maximum: 140 }, presence: true
   validates :description, length: { maximum: 300 }, presence: true

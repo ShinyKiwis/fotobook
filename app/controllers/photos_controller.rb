@@ -57,7 +57,32 @@ class PhotosController < ApplicationController
     redirect_to user_photos_path(current_user)
   end
 
+  def like
+    return nil if current_user.nil?
+
+    @photo = Photo.find(params[:id])
+    current_user.like(@photo)
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: personal_stream
+      end
+    end
+  end
+
   private
+
+  def personal_stream
+    personal_target = "#{helpers.dom_id(@photo)}_personal_likes"
+    # binding.pry
+    turbo_stream.replace(personal_target,
+                         partial: "shared/buttons/like/like_button",
+                         locals: {
+                           photo: @photo,
+                           like_status: current_user.liked?(@photo)
+                         }
+                        )
+  end
+
   def photo_params
     params.require(:photo).permit(:title, :description, :thumbnail_img, :sharing_mode)
   end

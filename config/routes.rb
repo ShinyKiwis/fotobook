@@ -16,8 +16,13 @@ Rails.application.routes.draw do
     resources :photos, :albums
   end
 
+  # Forgot password route
   get 'password/reset', to: 'password_resets#new'
   post 'password/reset', to: 'password_resets#reset'
+
+  # Like route
+  post 'photo/like/:id', to: 'photos#like', as: 'like_photo'
+  post 'album/like/:id', to: 'albums#like', as: 'album_photo'
 
   resource :session, only: %i[new create destroy]
 

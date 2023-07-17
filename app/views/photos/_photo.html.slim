@@ -13,9 +13,12 @@
             p.card-text
               | #{photo.description}
             .mt-auto.d-flex.align-items-center.photo-bottom
-              span.d-flex.gap-2.align-items-center[style="cursor:pointer;"]
-                = render 'shared/heart'
-                | #{photo.like_count} 
+              span
+                - if current_user
+                  = render 'shared/buttons/like/like_button', photo: photo, like_status: current_user.liked?(photo)
+                - else
+                  = render 'shared/buttons/like/like_button', photo: photo, like_status: false
+
               span.ms-auto.text-center
                 = photo.created_at.in_time_zone("Asia/Ho_Chi_Minh").strftime("%H:%M %P %d/%m/%Y")
   = render 'photos/modal', photo: photo

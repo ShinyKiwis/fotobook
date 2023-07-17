@@ -1,0 +1,9 @@
+= turbo_frame_tag "#{dom_id(photo)}_personal_likes", class: 'd-flex gap-2 align-items-center' do
+  = button_to like_photo_path(photo), class:'like-btn' do 
+    - if like_status
+      = render 'shared/liked_heart'
+    - else
+      = render 'shared/heart'
+  = render 'shared/buttons/like/like_count', photo: photo
+
+

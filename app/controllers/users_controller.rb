@@ -30,4 +30,14 @@ class UsersController < ApplicationController
       puts "There is error"
     end
   end
+
+  def following_index
+    @user = User.find(params[:user_id])
+    render 'users/following'
+  end
+
+  def follower_index
+    @user = User.find(params[:user_id])
+    render 'users/follower'
+  end
 end

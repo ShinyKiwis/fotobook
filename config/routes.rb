@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :photos, :albums
+    get '/followings', to: 'users#following_index'
+    get '/followers', to: 'users#follower_index'
   end
 
   # Forgot password route

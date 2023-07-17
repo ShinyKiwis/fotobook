@@ -13,6 +13,10 @@ module UsersHelper
       user_photos_path(user_id)
     when 'albums'
       user_albums_path(user_id)
+    when 'followings'
+      user_followings_path(user_id)
+    when 'followers'
+      user_followers_path(user_id)
     end
   end
 end

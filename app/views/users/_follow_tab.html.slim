@@ -1,0 +1,18 @@
+.personal-photo
+  .follow-card.card.d-flex.flex-column.align-items-center.p-3.col-3
+    = render 'shared/avatar', size: '8', user: current_user
+    div
+      h5.fw-bold.mt-2.text-dark-emphasis
+        = get_username(current_user)
+      div.d-flex.justify-content-between
+        .d-flex.flex-column.align-items-center.text-primary
+          h5.fw-bold.mb-0
+            = current_user.photos.count
+          span
+            | PHOTOS
+        .d-flex.flex-column.align-items-center.text-primary
+          h5.fw-bold.mb-0
+            = current_user.albums.count
+          span
+            | ALBUMS
+    = render 'shared/buttons/follow_button', style: ''

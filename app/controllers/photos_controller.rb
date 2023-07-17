@@ -77,7 +77,7 @@ class PhotosController < ApplicationController
     turbo_stream.replace(personal_target,
                          partial: "shared/buttons/like/like_button",
                          locals: {
-                           photo: @photo,
+                           asset: @photo,
                            like_status: current_user.liked?(@photo)
                          }
                         )

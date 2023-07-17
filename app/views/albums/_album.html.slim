@@ -16,9 +16,11 @@
             p.card-text
               = album.description
             .mt-auto.d-flex.align-items-center.photo-bottom
-              span.d-flex.gap-2.align-items-center[style="cursor:pointer;"]
-                = render 'shared/heart'
-                = album.like_count
+              span
+                - if current_user
+                  = render 'shared/buttons/like/like_button', asset: album, like_status: current_user.liked?(album)
+                - else
+                  = render 'shared/buttons/like/like_button', asset: album, like_status: false
               span.ms-auto.text-center
                 = album.created_at.in_time_zone("Asia/Ho_Chi_Minh").strftime("%H:%M %P %d/%m/%Y")
   = render 'albums/modal', album: album

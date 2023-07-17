@@ -55,7 +55,31 @@ class AlbumsController < ApplicationController
     redirect_to user_albums_path(current_user)
   end
 
+  def like
+    return nil if current_user.nil?
+
+    @album = Album.find(params[:id])
+    current_user.like(@album)
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: personal_stream
+      end
+    end
+  end
+
   private
+
+  def personal_stream
+    personal_target = "#{helpers.dom_id(@album)}_personal_likes"
+    # binding.pry
+    turbo_stream.replace(personal_target,
+                         partial: "shared/buttons/like/like_button",
+                         locals: {
+                           asset: @album,
+                           like_status: current_user.liked?(@album)
+                         }
+                        )
+  end
   def album_params
     params.require(:album).permit(:title, :description, :sharing_mode, { photos: [] })
   end

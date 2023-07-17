@@ -17,7 +17,9 @@ class Album < ApplicationRecord
   mount_uploaders :photos, PhotoUploader
   belongs_to :user
   has_many :photos
-  has_many :liked_albums
+
+  has_many :liked_albums, dependent: :destroy
+  has_many :likes, through: :liked_albums, source: :user
 
   validates :title, length: { maximum: 140 }, presence: true
   validates :description, length: { maximum: 300 }, presence: true

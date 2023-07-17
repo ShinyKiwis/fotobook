@@ -16,8 +16,13 @@ module ApplicationHelper
     end
   end
 
+  def update_path(asset)
+    asset.is_a?(Photo) ? like_photo_path(asset) : like_album_path(asset)
+  end
+
   def full_layout?
     return false if request.path.include?('login') || request.path.include?('signup') || request.path.include?('password')
-    request.path.include?('photo') || request.path.include?('album')
+    # request.path.include?('photo') || request.path.include?('album')
+    true
   end
 end

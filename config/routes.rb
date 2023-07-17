@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   # Like route
   post 'photo/like/:id', to: 'photos#like', as: 'like_photo'
-  post 'album/like/:id', to: 'albums#like', as: 'album_photo'
+  post 'album/like/:id', to: 'albums#like', as: 'like_album'
 
   resource :session, only: %i[new create destroy]
 

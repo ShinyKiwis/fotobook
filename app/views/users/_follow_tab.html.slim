@@ -1,18 +1,24 @@
 .personal-photo
-  .follow-card.card.d-flex.flex-column.align-items-center.p-3.col-3
-    = render 'shared/avatar', size: '8', user: current_user
-    div
+  .follow-card.card.d-flex.flex-column.align-items-center.p-4.col-3
+    .user-container
+      - if user.avatar_img.file.nil?
+        = render 'shared/avatar', size: '6', user: user
+      - else
+        = render 'shared/avatar', size: '8', user: user
+      span
+    div.text-center.col-10
       h5.fw-bold.mt-2.text-dark-emphasis
-        = get_username(current_user)
+        = link_to get_username(user), user_photos_path(user)
       div.d-flex.justify-content-between
         .d-flex.flex-column.align-items-center.text-primary
           h5.fw-bold.mb-0
-            = current_user.photos.count
+            = user.photos.count
           span
             | PHOTOS
         .d-flex.flex-column.align-items-center.text-primary
           h5.fw-bold.mb-0
-            = current_user.albums.count
+            = user.albums.count
           span
             | ALBUMS
-    = render 'shared/buttons/follow_button', style: ''
+    - if user.id != current_user.id
+      = render 'shared/buttons/follow_button', user: user , style: 'margin-top: auto !important'

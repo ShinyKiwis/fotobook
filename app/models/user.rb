@@ -24,10 +24,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
 
-  has_many :following, class_name: 'Follow', foreign_key: 'followee_id', dependent: :destroy
+  has_many :following, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy
   has_many :followees, through: :following, dependent: :destroy
 
-  has_many :followed, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy
+  has_many :followed, class_name: 'Follow', foreign_key: 'followee_id', dependent: :destroy
   has_many :followers, through: :followed, dependent: :destroy
 
   has_many :albums
@@ -50,6 +50,10 @@ class User < ApplicationRecord
     like_asset.include?(asset)
   end
 
+  def follow?(user)
+    followees.include?(user)
+  end
+
   def like(asset)
     like_asset = asset.is_a?(Photo) ? like_photos : like_albums
     if liked?(asset)
@@ -58,4 +62,5 @@ class User < ApplicationRecord
       like_asset << asset
     end
   end
+
 end

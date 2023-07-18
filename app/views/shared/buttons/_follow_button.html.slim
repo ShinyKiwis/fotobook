@@ -1,6 +1,11 @@
-- if true
-  button.follow-btn[style="#{style}"]
-    | follow
-- else 
-  button.following-btn[style="#{style}"]
-    | following
+/ div[style="#{style}"]
+/   - if true
+/     = button_to 'follow', follows_path(user), class: 'follow-btn'
+/   - else 
+/     = button_to 'following', follows_path(user), class: 'following-btn'
+- if current_user
+  div[style="#{style}"]
+    - if not current_user.follow?(user)
+      = button_to 'follow', follows_path, params: { followee_id: user.id }, method: :post, class: 'follow-btn'
+    - else
+      = button_to 'following', follow_path(user), params: { followee_id: user.id }, method: :delete, class: 'following-btn'

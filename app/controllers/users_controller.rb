@@ -40,4 +40,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     render 'users/follower'
   end
+
+  def follow
+    current_user&.follow(params[:id])
+  end
 end

@@ -3,6 +3,6 @@ ul.navbar-nav.ms-auto.d-flex
     #profile-container.nav-link.text-white
       = render 'shared/avatar', size: '', user: current_user
       span.me-5[style="margin-top: 0.2em"]
-        = link_to get_username(current_user), user_photos_path(current_user), class: "text-white"
+        = link_to get_username(current_user), user_photos_path(current_user), class: "text-white ms-2"
   li.nav-item
     = link_to "Logout", destroy_user_session_path , class: "nav-link text-white text-decoration-none", method: :delete

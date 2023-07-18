@@ -1,6 +1,7 @@
 div.d-flex.align-items-center
   = render 'shared/avatar', size: '', user: user
-  span.fs-5.fw-bold
+  span.fs-5.fw-bold.ms-2
     = link_to get_username(user), user_photos_path(user), class: 'text-white'
-  = render('shared/buttons/follow_button', style: '')if request.path.include?("discover")
+  - if request.path.include?('discover') && current_user.id != user.id
+    = render('shared/buttons/follow_button', user: user, style: 'margin-left: auto !important')
  

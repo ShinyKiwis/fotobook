@@ -2,11 +2,5 @@
   = render 'users/user_information', user: @user
   .w-100.d-flex.flex-column
     .personal-photo-container.row.row-cols-4.mt-4.gap-1.gy-2.justify-content-center
-      = render 'users/follow_tab'
-      = render 'users/follow_tab'
-      = render 'users/follow_tab'
-      = render 'users/follow_tab'
-      = render 'users/follow_tab'
-      = render 'users/follow_tab'
-      = render 'users/follow_tab'
-      = render 'users/follow_tab'
+      - @user.followees.each do |followee|
+        = render 'users/follow_tab', user: followee

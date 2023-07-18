@@ -18,15 +18,16 @@ Rails.application.routes.draw do
     get '/followers', to: 'users#follower_index'
   end
 
-  # Forgot password route
+  # Forgot password feature
   get 'password/reset', to: 'password_resets#new'
   post 'password/reset', to: 'password_resets#reset'
 
-  # Like route
+  # Like feature
   post 'photo/like/:id', to: 'photos#like', as: 'like_photo'
   post 'album/like/:id', to: 'albums#like', as: 'like_album'
 
   resource :session, only: %i[new create destroy]
+  resources :follows, only: %i[create destroy]
 
   scope :feeds, as: 'feeds', shallow_path: 'feeds' do
     resources :photos, :albums

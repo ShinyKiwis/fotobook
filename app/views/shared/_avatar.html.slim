@@ -1,5 +1,5 @@
 - if user.avatar_img.file.nil?
-  span.me-2[style="#{!size.to_i.zero? ? "font-size: #{size.to_i/2}em": ''}"]
+  span[style="#{!size.to_i.zero? ? "font-size: #{size.to_i/2}em": ''}"]
     = get_short_username(user)
 - elsif user
-  = image_tag user.avatar_img.url, style: "width:#{size}em; height:#{size}em;", class: "me-2 avatar"
+  = image_tag user.avatar_img.url, style: "width:#{size}em; height:#{size}em;", class: "avatar"

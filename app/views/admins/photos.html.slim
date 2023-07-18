@@ -1,0 +1,5 @@
+#photo-container.d-flex.flex-column.align-items-center.w-100
+  .row.w-100.g-4.row-cols-4
+    - @photos.each do |photo|
+      = render 'photo', photo: photo
+

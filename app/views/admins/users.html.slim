@@ -1,0 +1,16 @@
+#photo-container.w-100.d-flex.flex-column.align-items-center
+  table.table.table-borderless
+    thead
+      tr.border-bottom
+        th[scope="col"]
+          | First Name
+        th[scope="col"]
+          | Last Name
+        th[scope="col"]
+          | Email
+        th[scope="col"]
+          | Last Login
+        th[scope="col"]
+    tbody
+      - @users.all.each do |user|
+        = render 'user', user: user

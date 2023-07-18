@@ -1,6 +1,9 @@
 nav.navbar.navbar-expand-lg.fw-bold
   div.container-fluid.col-md-10
-    a.navbar-brand.text-white.me-5 [href='/'] Fotobook
+    - if current_user&.is_admin
+      a.navbar-brand.text-white.me-5 [href='/'] Fotobook Admin 
+    - else
+      a.navbar-brand.text-white.me-5 [href='/'] Fotobook
     button.navbar-toggler.my-2 [
       type='button' 
       data-bs-toggle="collapse" 

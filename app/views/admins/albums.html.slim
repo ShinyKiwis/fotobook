@@ -1,0 +1,4 @@
+#photo-container.w-100.d-flex.flex-column.align-items-center.w-100
+  .row.w-100.g-4
+    - @albums.each do |album|
+      = render 'album', album: album

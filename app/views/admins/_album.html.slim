@@ -1,0 +1,16 @@
+.col-12.col-md-3
+  .edit-my-photo-container
+    .album-cover.album-frame.col-7.col-md-8.mx-auto
+      img.rounded.edit-album[src="#{album.photos[0].url}"]
+      img.rounded.edit-album[src="#{album.photos[0].url}"]
+      img.rounded.edit-album[src="#{album.photos[0].url}"]
+    span.d-flex
+      span
+        = generate_title(album.title)
+      span.ms-auto.admin-edit-btn
+        = link_to edit_user_album_path(album.user_id, album.id) do
+          i.fa-solid.fa-pen-to-square.text-dark
+
+    - if album.sharing_mode == 'private'
+      span
+        i.fa-solid.fa-lock

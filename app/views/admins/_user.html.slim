@@ -1,0 +1,14 @@
+tr
+  td
+    = user.first_name
+  td
+    = user.last_name
+  td
+    = user.email
+  td
+    | 4:56PM 20/06/2023
+  td.edit-user-actions.d-flex.gap-2
+    button.bg-success.border-success.edit-action-btn
+      = link_to "Edit", "#", class: 'text-white'
+    / = button_to "Edit", "#", class: "btn bg-success border-success"
+    = button_to "Delete", users_admin_path, params: {user_id: user.id} , class: "btn bg-danger border-danger"

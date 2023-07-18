@@ -9,6 +9,14 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+
+  resource :admin do
+    get 'photos', to: 'admins#index'
+    get 'albums', to: 'admins#index'
+    get 'users', to: 'admins#index'
+    post 'users', to: 'admins#delete_user'
+  end
+
   # put 'users/basic_info', to: 'users/registrations#update_basic_info'
 
 

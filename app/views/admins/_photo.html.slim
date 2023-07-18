@@ -1,0 +1,13 @@
+.col-12.col-md-3
+  .edit-my-photo-container
+    img.rounded.edit-photo[src="#{photo.thumbnail_img.url}"]
+    span.d-flex
+      span
+        = generate_title(photo.title)
+      span.ms-auto.admin-edit-btn
+        = link_to edit_user_photo_path(photo.user_id, photo.id) do
+          i.fa-solid.fa-pen-to-square.text-dark
+
+    - if photo.sharing_mode == 'private'
+      span
+        i.fa-solid.fa-lock

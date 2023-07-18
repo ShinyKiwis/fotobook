@@ -30,8 +30,8 @@ class User < ApplicationRecord
   has_many :followed, class_name: 'Follow', foreign_key: 'followee_id', dependent: :destroy
   has_many :followers, through: :followed, dependent: :destroy
 
-  has_many :albums
-  has_many :photos
+  has_many :albums, dependent: :destroy
+  has_many :photos, dependent: :destroy
 
   has_many :liked_photos, dependent: :destroy
   has_many :like_photos, through: :liked_photos, source: :photo

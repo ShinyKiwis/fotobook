@@ -16,6 +16,10 @@ module ApplicationHelper
     end
   end
 
+  def active_link(link)
+    request.path.include?(link) ? 'active' : ''
+  end
+
   def update_path(asset)
     asset.is_a?(Photo) ? like_photo_path(asset) : like_album_path(asset)
   end

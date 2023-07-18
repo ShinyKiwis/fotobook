@@ -55,6 +55,7 @@ class PhotosController < ApplicationController
       flash[:notice] = 'Photo deleted successfully'
     end
     redirect_to user_photos_path(current_user)
+    # redirect_to request.referrer
   end
 
   def like

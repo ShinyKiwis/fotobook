@@ -1,7 +1,14 @@
 #left-col.col-sm-2.d-md-block.d-none
   ul.ms-4.mt-5
-    li
-    li
-      = link_to "Feeds", root_path, class: "#{request.path.include?('feeds') ? 'active' :''}"
-    li
-      = link_to "Discover", discover_photos_path, class: "#{request.path.include?('discover') ? 'active' :''}"
+    - if !request.path.include?('admin') || current_user.nil? || !current_user.is_admin 
+      li
+        = link_to "Feeds", root_path, class: "#{active_link('feeds')}"
+      li
+        = link_to "Discover", discover_photos_path, class: "#{active_link('discover')}"
+    - else
+      li
+        = link_to "Manage Photos", photos_admin_path, class: "#{active_link('photos')}"
+      li
+        = link_to "Manage Albums", albums_admin_path, class: "#{active_link('albums')}"
+      li
+        = link_to "Manage Users", users_admin_path, class: "#{active_link('users')}"

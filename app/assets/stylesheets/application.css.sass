@@ -74,6 +74,10 @@ input[type="button"], button
   a
     color: $primary !important
 
+@media screen and (max-width: 768px)
+  #profile-container
+    margin-top: 0.8em
+
 #profile-container
   display: flex;
   align-items: center;
@@ -192,3 +196,14 @@ input[type="button"], button
   background-color: $bd-background
   width: 15em 
   height: 18em
+
+#photo-container
+  height: 80vh
+
+@media screen and (max-width: 768px)
+  #photo-container 
+    overflow: auto
+
+@media screen and (min-width: 768px)
+  #photo-container
+    overflow: auto

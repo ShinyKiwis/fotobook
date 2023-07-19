@@ -1,7 +1,7 @@
-#avatar-container.mt-2.rounded[style="background-image: url(#{current_user.avatar_img.url}); background-size: 10em 10em"]
-  - if current_user.avatar_img.file.nil?
+#avatar-container.mt-2.rounded[style="background-image: url(#{user.avatar_img.url}); background-size: 10em 10em"]
+  - if user.avatar_img.file.nil?
     span#avatar-short-username
-      = get_short_username(current_user)
+      = get_short_username(user)
   = form_with model: @user, url: user_path(@user), method: :patch do |f|
     span#change-btn[onclick="document.getElementById('photoChange').click()"]
       | CHANGE

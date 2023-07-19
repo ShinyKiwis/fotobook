@@ -3,7 +3,7 @@ h5.fw-bold.mx-2.mt-2.align-self-start
 .row.w-100.border-2.border-top
   .d-none.d-md-block.col-4
   .col-8
-    = render 'avatar_container'
+    = render 'avatar_container', user: current_user
     h5.fw-bold.mt-3
       | Basic Information
 div[data-controller="toast" data-toast-status-value="error"]

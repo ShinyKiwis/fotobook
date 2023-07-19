@@ -1,17 +1,15 @@
 require 'pry'
 
 class PhotosController < ApplicationController
-
   def index
+    @photos = []
     if request.path.include?("feeds") || request.path.include?("discover")
-      @photos = []
       Photo.where(sharing_mode: 'public').find_in_batches(batch_size: 20) do |photos|
         @photos.concat(photos)
         break if @photos.size >= 20
       end
       render 'public'
     else
-      @photos = []
       if current_user
         @user = params[:user_id] == current_user.id ? current_user : User.find(params[:user_id])
         if @user.id == current_user.id
@@ -54,8 +52,11 @@ class PhotosController < ApplicationController
       @photo.destroy
       flash[:notice] = 'Photo deleted successfully'
     end
-    redirect_to user_photos_path(current_user)
-    # redirect_to request.referrer
+    if current_user.is_admin
+      redirect_to photos_admin_path
+    else
+      redirect_to user_photos_path(current_user)
+    end
   end
 
   def like

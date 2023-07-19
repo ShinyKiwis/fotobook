@@ -8,8 +8,8 @@
         = render 'shared/buttons/edit_button', is_admin: false, style: 'margin-left: 0 !important'
       - else 
         = render 'shared/buttons/follow_button', user: user, style: ''
-      - if current_user&.is_admin
+      - if current_user&.id == user.id && current_user&.is_admin
         = render 'shared/buttons/edit_button', is_admin: true
-    h2.fw-bold
+    h2.fw-bold.mt-2
       = get_username(user)
     = render 'users/user_tabs', user: user

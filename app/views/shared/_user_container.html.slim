@@ -1,5 +1,5 @@
 div.d-flex.align-items-center
-  = render 'shared/avatar', size: '', user: user
+  = render 'shared/avatar', size: '3', user: user
   span.fs-5.fw-bold.ms-2
     = link_to get_username(user), user_photos_path(user), class: 'text-white'
   - if request.path.include?('discover') && current_user.id != user.id

@@ -9,6 +9,6 @@ tr
     | 4:56PM 20/06/2023
   td.edit-user-actions.d-flex.gap-2
     button.bg-success.border-success.edit-action-btn
-      = link_to "Edit", "#", class: 'text-white'
+      = link_to "Edit", edit_user_admin_path(user), class: 'text-white'
     / = button_to "Edit", "#", class: "btn bg-success border-success"
-    = button_to "Delete", users_admin_path, params: {user_id: user.id} , class: "btn bg-danger border-danger"
+    = button_to "Delete", users_admin_path, params: {user_id: user.id}, method: :delete , class: "btn bg-danger border-danger"

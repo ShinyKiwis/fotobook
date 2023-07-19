@@ -15,6 +15,8 @@
 #  updated_at       :datetime         not null
 #
 class Photo < ApplicationRecord
+  # default_scope { order(created_at: :desc) }
+
   mount_uploader :thumbnail_img, PhotoUploader
 
   belongs_to :user

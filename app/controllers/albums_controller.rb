@@ -52,7 +52,11 @@ class AlbumsController < ApplicationController
       @album.destroy
       flash[:notice] = 'Album deleted successfully'
     end
-    redirect_to user_albums_path(current_user)
+    if current_user.is_admin
+      redirect_to albums_admin_path
+    else
+      redirect_to user_albums_path(current_user)
+    end
   end
 
   def like

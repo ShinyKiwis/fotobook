@@ -14,9 +14,10 @@ Rails.application.routes.draw do
     get 'photos', to: 'admins#index'
     get 'albums', to: 'admins#index'
     get 'users', to: 'admins#index'
-    post 'users', to: 'admins#delete_user'
+    get 'users/:id/edit', to: 'admins#show', as: 'edit_user'
+    patch 'users/:id/update', to: 'admins#update', as: 'update_user'
+    delete 'users', to: 'admins#delete_user'
   end
-
   # put 'users/basic_info', to: 'users/registrations#update_basic_info'
 
 

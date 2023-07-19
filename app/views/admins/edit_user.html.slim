@@ -1,0 +1,47 @@
+h5.fw-bold.mx-2.mt-2.align-self-start
+  | Edit User Profile
+.row.w-100.border-2.border-top
+  .d-none.d-md-block.col-4
+  .col-8
+    = render 'devise/registrations/avatar_container', user: @user
+    h5.fw-bold.mt-3
+      | Basic Information
+div
+  = form_for(@user, url: update_user_admin_path(@user), html: { class: "row edit-form" }) do |f|
+    = render "devise/shared/error_messages", resource: @user
+    .d-flex.align-items-center.flex-wrap
+      = f.label :first_name, "First Name", class: "col-12 col-md-4 fw-bold text-md-end"
+      = f.text_field :first_name, placeholder: "First Name", autofocus: false, class: "col-12 col-md-3 ms-md-2"
+    .d-flex.align-items-center.mt-2.flex-wrap
+      = f.label :last_name, "Last Name", class: "col-12 col-md-4 fw-bold text-md-end"
+      = f.text_field :last_name, placeholder: "Last Name", class: "col-12 col-md-3 ms-md-2"
+    .d-flex.align-items-center.mt-2.flex-wrap
+      = f.label :email, "Email", class: "col-12 col-md-4 fw-bold text-md-end"
+      = f.email_field :email, placeholder: "Email", class: "col-12 col-md-3 ms-md-2", id: "email"
+    .d-flex.align-items-center.mt-2.flex-wrap
+      = f.label :password, "Password", class: "col-12 col-md-4 fw-bold text-md-end"
+      = f.password_field :password, placeholder: "Password", class: "col-12 col-md-3 ms-md-2"
+    .d-flex.align-items-center.mt-2.flex-wrap
+      = f.label :is_active, "Active ?", class: "col-12 col-md-4 fw-bold text-md-end"
+      = f.check_box :is_active, class: "col-12 col-md-3 ms-md-2", style: "width: fit-content;"
+    .col-4.px-0b
+    .col-8
+      = f.submit "Save", class: "col-6 col-md-2 bg-success w-5"
+  / .row
+  /   .d-none.d-md-block.col-4
+  /   h5.col-8.fw-bold.mt-3
+  /     | Password
+  /
+  / = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "row edit-form"}) do |f|
+  /   .d-flex.align-items-center.flex-wrap
+  /     = f.label :current_password, "Current Password", class: "col-12 col-md-4 fw-bold text-md-end"
+  /     = f.password_field :current_password, placeholder: "Password", class: "col-12 col-md-3 ms-md-2"
+  /   .d-flex.align-items-center.mt-2.flex-wrap
+  /     = f.label :password, "New Password", class: "col-12 col-md-4 fw-bold text-md-end"
+  /     = f.password_field :password, placeholder: "New Password", class: "col-12 col-md-3 ms-md-2"
+  /   .d-flex.align-items-center.mt-2.flex-wrap
+  /     = f.label :password_confirmation, "Password Confirmation", class: "col-12 col-md-4 fw-bold text-md-end"
+  /     = f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "col-12 col-md-3 ms-md-2"
+  /   .col-4.px-0
+  /   .col-8
+  /     = f.submit "Save", class: "col-6 col-md-2 bg-success w-5", data: {action: "click->toast#show"}

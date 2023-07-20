@@ -2,7 +2,7 @@
   .follow-card.card.d-flex.flex-column.align-items-center.p-4.col-3
     .user-container
       - if user.avatar_img.file.nil?
-        = render 'shared/avatar', size: '6', user: user
+        = render 'shared/avatar', size: '8', user: user
       - else
         = render 'shared/avatar', size: '8', user: user
       span

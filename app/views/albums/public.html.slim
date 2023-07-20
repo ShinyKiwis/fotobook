@@ -4,4 +4,5 @@
   .row.row-cols-2
     - @albums.each do |album|
       = render 'albums/album', album: album
-
+.mt-2
+  = paginate @albums

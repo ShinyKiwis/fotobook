@@ -15,6 +15,7 @@
 #  updated_at       :datetime         not null
 #
 class Photo < ApplicationRecord
+  paginates_per 40
   # default_scope { order(created_at: :desc) }
 
   mount_uploader :thumbnail_img, PhotoUploader

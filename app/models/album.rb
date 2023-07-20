@@ -14,6 +14,7 @@
 #  photos           :json
 #
 class Album < ApplicationRecord
+  paginates_per 40
   mount_uploaders :photos, PhotoUploader
   belongs_to :user
   has_many :photos

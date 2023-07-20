@@ -46,4 +46,9 @@ export default class extends Controller {
     this.uploadedPhotoContainer.classList.add('d-none')
     this.uploadButton.classList.remove('d-none')
   }
+
+  delete() {
+    const deleteBtn = document.getElementById('delete-btn')
+    deleteBtn.click()
+  }
 }

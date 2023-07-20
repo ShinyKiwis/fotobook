@@ -12,8 +12,9 @@ Rails.application.routes.draw do
 
   resource :admin do
     get 'photos', to: 'admins#index'
-    get 'albums', to: 'admins#index'
-    get 'users', to: 'admins#index'
+    get 'albums', to: 'admins#index_albums'
+    get 'users', to: 'admins#index_users'
+
     get 'users/:id/edit', to: 'admins#show', as: 'edit_user'
     patch 'users/:id/update', to: 'admins#update', as: 'update_user'
     delete 'users', to: 'admins#delete_user'
@@ -38,13 +39,22 @@ Rails.application.routes.draw do
   resource :session, only: %i[new create destroy]
   resources :follows, only: %i[create destroy]
 
-  scope :feeds, as: 'feeds', shallow_path: 'feeds' do
-    resources :photos, :albums
+  scope 'feeds', as: 'feeds', shallow_path: 'feeds' do
+    resources :photos, only: [:index], controller: 'photos'
+    resources :albums, only: [:index], controller: 'albums'
   end
 
-  scope :discover, as: 'discover', shallow_path: 'discover' do
-    resources :photos, :albums
+  scope 'discover', as: 'discover', shallow_path: 'discover' do
+    resources :photos, only: [:index], controller: 'photos', action: 'index_discover'
+    resources :albums, only: [:index], controller: 'albums', action: 'index_discover'
   end
+  # scope :feeds, as: 'feeds', shallow_path: 'feeds' do
+  #   resources :photos, :albums
+  # end
+  #
+  # scope :discover, as: 'discover', shallow_path: 'discover' do
+  #   resources :photos, :albums
+  # end
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'

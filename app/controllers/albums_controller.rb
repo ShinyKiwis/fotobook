@@ -2,30 +2,36 @@ require 'pry'
 
 class AlbumsController < ApplicationController
   def index
-    if request.path.include?("feeds") || request.path.include?("discover")
-      @albums = []
-      Album.where(sharing_mode: 'public').find_in_batches(batch_size: 20) do |photos|
-        @albums.concat(photos)
-        break if @albums.size >= 20
+    @albums = []
+    if request.path.include?('feeds')
+      if current_user && request.path.include?('feeds')
+        following_users = current_user.followees
+        following_users.each do |user|
+          @albums = user.albums.where(sharing_mode: 'public').page(params[:page]).per(10)
+        end
       end
       render 'public'
     else
-      @albums = []
       if current_user
         @user = params[:user_id] == current_user.id ? current_user : User.find(params[:user_id])
         if @user.id == current_user.id
-          @albums.concat(@user.albums)
+          @albums = @user.albums.page(params[:page]).per(20)
         else
-          @albums = Album.where(user_id: @user.id, sharing_mode: 'public')
+          @albums = Album.where(user_id: @user.id, sharing_mode: 'public').page(params[:page]).per(10)
         end
       else
         # Guest
         @user = User.find(params[:user_id])
-        @albums = Album.where(user_id: @user.id, sharing_mode: 'public')
+        @albums = Album.where(user_id: @user.id, sharing_mode: 'public').page(params[:page]).per(10)
       end
 
       render 'personal'
     end
+  end
+
+  def index_discover
+    @albums = Album.where(sharing_mode: 'public').order(created_at: :desc).page(params[:page]).per(10)
+    render 'public'
   end
 
   def create

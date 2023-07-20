@@ -27,5 +27,20 @@
 
     .col-6.col-md-4.d-flex.justify-content-between
       = f.submit "Save", class: "col-4 col-md-2 bg-success border-success w-50", style: "padding: 0.8em 0.6em !important; margin-right: 2em !important", name: 'save'
-      = f.submit "Delete", class: "col-4 col-md-2 bg-danger border-danger w-50", style: "padding: 0.8em 0.6em !important;", name: 'delete'
+      = f.button "Delete", type: 'button', class: "col-4 col-md-2 bg-danger border-danger w-50", style: "padding: 0.8em 0.6em !important;", name: 'delete', data: {bs_target: '#staticBackdrop', bs_toggle: 'modal'}
 
+      = f.submit 'Delete', class: 'd-none', name: 'delete', id: 'delete-btn'
+
+      #staticBackdrop.modal.fade[data-controller='photo' data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"]
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h1#staticBackdropLabel.modal-title.fs-5
+                | Deletion Confirmation 
+            .modal-body
+              |  Are you sure you want to delete this album ?
+            .modal-footer
+              button.bg-success[type="button" data-bs-dismiss="modal"]
+                | Cancel
+              button.bg-danger[type="button" data-action="click->photo#delete"]
+                | Yes 

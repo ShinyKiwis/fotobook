@@ -2,3 +2,5 @@
   - @photos.each do |photo|
     = render 'photos/photo', photo: photo
 
+.mt-2
+  = paginate @photos

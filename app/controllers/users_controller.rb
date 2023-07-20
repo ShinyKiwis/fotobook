@@ -33,11 +33,13 @@ class UsersController < ApplicationController
 
   def following_index
     @user = User.find(params[:user_id])
+    @followees = @user.followees.page(params[:page])
     render 'users/following'
   end
 
   def follower_index
     @user = User.find(params[:user_id])
+    @followers = @user.followers.page(params[:page])
     render 'users/follower'
   end
 

@@ -3,26 +3,34 @@ require 'pry'
 class PhotosController < ApplicationController
   def index
     @photos = []
-    if request.path.include?("feeds") || request.path.include?("discover")
-      Photo.where(sharing_mode: 'public').find_in_batches(batch_size: 20) do |photos|
-        @photos.concat(photos)
-        break if @photos.size >= 20
+    if request.path.include?('feeds')
+      if current_user && request.path.include?('feeds')
+        following_users = current_user.followees
+        following_users.each do |user|
+          @photos = user.photos.where(sharing_mode: 'public').page(params[:page]).per(10)
+        end
       end
+        # binding.pry
       render 'public'
     else
       if current_user
         @user = params[:user_id] == current_user.id ? current_user : User.find(params[:user_id])
         if @user.id == current_user.id
-          @photos.concat(@user.photos)
+          @photos = @user.photos.page(params[:page]).per(20)
         else
-          @photos = Photo.where(user_id: @user.id, sharing_mode: 'public')
+          @photos = Photo.where(user_id: @user.id, sharing_mode: 'public').page(params[:page]).per(20)
         end
       else
         @user = User.find(params[:user_id])
-        @photos = Photo.where(user_id: @user.id, sharing_mode: 'public')
+        @photos = Photo.where(user_id: @user.id, sharing_mode: 'public').page(params[:page]).per(20)
       end
       render 'personal'
     end
+  end
+
+  def index_discover
+    @photos = Photo.where(sharing_mode: 'public').order(created_at: :desc).page(params[:page]).per(10)
+    render 'public'
   end
 
   def create

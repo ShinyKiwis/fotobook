@@ -1,4 +1,4 @@
-- text = is_admin ? "Administration" : "Edit Profile"
+- text = is_admin ? "#{t('user.admin')}" : "#{t('user.edit')}"
 - edit_path = is_admin ? photos_admin_path : edit_user_registration_path(current_user)
 button.edit-btn
   = link_to text, edit_path

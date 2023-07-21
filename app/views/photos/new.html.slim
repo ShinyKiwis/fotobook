@@ -1,16 +1,16 @@
 .container
   h5.fw-bold.align-self-start
-    | New Photo
+    | #{t('asset.new_photo')}
   = form_with model: @photo, url: user_photos_path(current_user), class: 'row border-2 border-top w-100 pt-2' do |f|
     .col-12.col-md-6
-      label.fw-bold.mb-2.text-dark for="photo_title" Title
+      label.fw-bold.mb-2.text-dark for="photo_title" #{t('asset.title')}
       = f.text_field "photo[title]",id: "photo_title", class: 'form-control mb-4', placeholder: 'Photo Title'
 
-      label.fw-bold.mb-2.text-dark Sharing mode
-      = select_tag "photo[sharing_mode]", options_for_select([["Public", "public"], ["Private", "private"]]), class: "form-select fw-bold text-dark-emphasis mb-4", aria: { label: "Select sharing mode" }, style: "width: 15em"
+      label.fw-bold.mb-2.text-dark #{t('asset.sharing_mode')}
+      = select_tag "photo[sharing_mode]", options_for_select([["#{t('asset.option.public')}", "public"], ["#{t('asset.option.private')}", "private"]]), class: "form-select fw-bold text-dark-emphasis mb-4", aria: { label: "Select sharing mode" }, style: "width: 15em"
 
     .col-12.col-md-6
-      label.fw-bold.mb-2.text-dark for="photo_description" Description
+      label.fw-bold.mb-2.text-dark for="photo_description" #{t('asset.description')}
       = f.text_area "photo[description]", id: "photo_description", class: 'col-12 form-control', placeholder: 'Photo Description', style: 'height: 8.2em; resize: none;'
 
     .mt-4.d-flex.flex-column.col-12[data-controller='photo']
@@ -24,6 +24,6 @@
         img#uploaded-photo.w-100.h-100[data-photo-target="uploadedPhoto" style="border-radius: 0.8em"]
 
       .col-12.col-md-6
-        = f.submit 'Create', class: 'col-4 col-md-3 bg-success border-success', style: 'padding: 0.2em 0.4em !important'
+        = f.submit "#{t('asset.action.create')}", class: 'col-4 col-md-3 bg-success border-success', style: 'padding: 0.2em 0.4em !important'
 
    

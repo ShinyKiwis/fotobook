@@ -3,7 +3,7 @@
   .w-100.d-flex.flex-column
     div.align-self-end.mt-2
       - if current_user && current_user.id == @user.id
-        = link_to "Add Album", new_user_album_path, class: 'text-white float-right bg-success rounded fw-bold p-2'
+        = link_to "#{t('user.add.album')}", new_user_album_path, class: 'text-white float-right bg-success rounded fw-bold p-2'
     .personal-photo-container.row.row-cols-4.mt-4.justify-content-evenly.mb-2
       - @albums.each do |album|
         = render 'personal_album', album: album 

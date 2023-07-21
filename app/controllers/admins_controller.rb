@@ -23,7 +23,7 @@ class AdminsController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if params[:user][:password]
+    if !params[:user][:password].empty?
       puts "HERE"
       user.update(update_user_params)
     else

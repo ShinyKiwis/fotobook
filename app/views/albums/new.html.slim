@@ -1,16 +1,16 @@
 .container
   h5.fw-bold.align-self-start
-    | New Album
+    | #{t('asset.new_album')}
   = form_with model: @album, url: user_albums_path(current_user), class: 'row border-2 border-top w-100 pt-2', multipart: true do |f|
     .col-12.col-md-6
-      label.fw-bold.mb-2.text-dark for="album_title" Title
+      label.fw-bold.mb-2.text-dark for="album_title" #{t('asset.title')}
       = f.text_field "album[title]",id: "album_title", class: 'form-control mb-4', placeholder: 'Album Title'
 
-      label.fw-bold.mb-2.text-dark Sharing mode
-      = select_tag "album[sharing_mode]", options_for_select([["Public", "public"], ["Private", "private"]]), class: "form-select fw-bold text-dark-emphasis mb-4", aria: { label: "Select sharing mode" }, style: "width: 15em"
+      label.fw-bold.mb-2.text-dar #{t('asset.sharing_mode')}
+      = select_tag "album[sharing_mode]", options_for_select([["#{t('asset.option.public')}", "public"], ["#{t('asset.option.private')}", "private"]]), class: "form-select fw-bold text-dark-emphasis mb-4", aria: { label: "Select sharing mode" }, style: "width: 15em"
 
     .col-12.col-md-6
-      label.fw-bold.mb-2.text-dark for="album_description" Description
+      label.fw-bold.mb-2.text-dark for="album_description" #{t('asset.description')} 
       = f.text_area "album[description]", id: "album_description", class: 'col-12 form-control', placeholder: 'Album Description', style: 'height: 8.2em; resize: none;'
 
     .mt-4.d-flex.flex-column.col-12[data-controller='album']
@@ -25,4 +25,4 @@
           = f.file_field "album[photos]", accept:'.jpeg, .png, .gif', id:'album_photos', class: 'form-control d-none', data: {action: "change->album#change_photo", album_target: 'photo'}, multiple: true, include_hidden: false
 
       .col-12.col-md-6
-        = f.submit 'Create', class: 'col-4 col-md-3 bg-success border-success', style: 'padding: 0.2em 0.4em !important'
+        = f.submit "#{t('asset.action.create')}", class: 'col-4 col-md-3 bg-success border-success', style: 'padding: 0.2em 0.4em !important'

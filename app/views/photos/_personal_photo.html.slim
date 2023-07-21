@@ -7,6 +7,6 @@
       data: {bs_toggle: "modal", bs_target: "#photoModal-#{photo.id}"}
     span.position-absolute[style="cursor:pointer;" data-bs-toggle="modal-ignore"]
       - if current_user && params[:user_id] == current_user.id.to_s
-        = link_to "EDIT", edit_user_photo_path(current_user.id,photo.id), class: "text-white"
+        = link_to "#{t('asset.action.edit')}", edit_user_photo_path(current_user.id,photo.id), class: "text-white"
   span
     = photo.title

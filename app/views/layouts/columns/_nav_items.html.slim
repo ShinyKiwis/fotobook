@@ -1,0 +1,13 @@
+ul.ms-4.mt-5
+  - if !request.path.include?('admin') || current_user.nil? || !current_user.is_admin 
+    li.nav-item
+      = link_to "#{t('nav.normal.feeds')}", root_path, class: "#{active_link('feeds')}"
+    li.nav-item
+      = link_to "#{t('nav.normal.discover')}", discover_photos_path, class: "#{active_link('discover')}"
+  - else
+    li.nav-item
+      = link_to "#{t('nav.admin.photos')}", photos_admin_path, class: "#{active_link('photos')}"
+    li.nav-item
+      = link_to "#{t('nav.admin.albums')}", albums_admin_path, class: "#{active_link('albums')}"
+    li.nav-item
+      = link_to "#{t('nav.admin.users')}", users_admin_path, class: "#{active_link('users')}"

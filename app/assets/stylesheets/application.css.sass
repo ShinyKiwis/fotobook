@@ -201,10 +201,29 @@ input[type="button"], button
   height: 80vh
 
 @media screen and (max-width: 768px)
+  .mobile-left-col
+    display: block
+
+    ul
+      padding: 0 !important
+      margin: 0 !important
+      list-style-type: none
+
+      a 
+        color: white !important
+
+      li 
+        margin-top: 0.8em
+
+      
+
   #photo-container 
     overflow: auto
 
 @media screen and (min-width: 768px)
+  .mobile-left-col
+    display: none
+
   #photo-container
     overflow: auto
 

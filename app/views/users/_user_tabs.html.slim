@@ -1,18 +1,18 @@
 .tabs.d-flex.align-items-center.gap-2[style="height: 2em;"]
-  = render 'users/tab', number_of_elements: user.photos.count, element_type: "PHOTOS"
+  = render 'users/tab', number_of_elements: user.photos.count, element_type: "#{t('user.tab.photos')}"
   span.inactive-tab
     | |
-  = render 'users/tab', number_of_elements: user.albums.count, element_type: "ALBUMS"
+  = render 'users/tab', number_of_elements: user.albums.count, element_type: "#{t('user.tab.albums')}"
   span.inactive-tab
     | |
-  = render 'users/tab', number_of_elements: user.followees.count, element_type: "FOLLOWINGS"
+  = render 'users/tab', number_of_elements: user.followees.count, element_type: "#{t('user.tab.followings')}"
   span.inactive-tab
     | |
-  = render 'users/tab', number_of_elements: user.followers.count, element_type: "FOLLOWERS"
+  = render 'users/tab', number_of_elements: user.followers.count, element_type: "#{t('user.tab.followers')}"
 
 
 select.tabs-select.mt-3[data-controller="option" data-option-target="select"]
-  - element_types = ["PHOTOS", "ALBUMS", "FOLLOWINGS", "FOLLOWERS"]
+  - element_types = [I18n.t('user.tab.photos'), I18n.t('user.tab.albums'), I18n.t('user.tab.followings'), I18n.t('user.tab.followers')]
   - element_counts = [user.photos.count, user.albums.count, user.followees.count, user.followers.count]
   - element_types.zip(element_counts).each do |element_type, element_count|
     option[value="#{get_type_link(element_type, params[:user_id])}" data-action="click->option#navigate"]

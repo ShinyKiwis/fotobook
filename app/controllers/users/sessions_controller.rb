@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# require 'pry'
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -10,7 +10,13 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    super
+    super do |resource|
+      unless resource.is_active?
+        sign_out
+        flash[:alert] = "Your account is inactive"
+        redirect_to login_path and return
+      end
+    end
   end
 
   # DELETE /resource/sign_out

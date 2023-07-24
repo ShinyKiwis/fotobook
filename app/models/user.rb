@@ -22,7 +22,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
 
   has_many :following, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy
   has_many :followees, through: :following, dependent: :destroy
@@ -44,6 +44,11 @@ class User < ApplicationRecord
   validates :email, length: { maximum: 255 }, presence: true,
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :password, length: { maximum: 64 }
+
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 
   def liked?(asset)
     like_asset = asset.is_a?(Photo) ? like_photos : like_albums

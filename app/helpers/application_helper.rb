@@ -16,6 +16,12 @@ module ApplicationHelper
     end
   end
 
+  def get_time(time)
+    if not time.nil?
+      time.in_time_zone("Asia/Ho_Chi_Minh").strftime("%H:%M %P %d/%m/%Y")
+    end
+  end
+
   def active_link(link)
     request.path.include?(link) ? 'active' : ''
   end

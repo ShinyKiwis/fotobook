@@ -24,12 +24,16 @@ class AdminsController < ApplicationController
   def update
     user = User.find(params[:id])
     if !params[:user][:password].empty?
-      puts "HERE"
       user.update(update_user_params)
     else
-      puts "THERE"
       user.update(update_user_params_without_password)
     end
+
+    # Send email if is_active is "0"
+    if params[:user][:is_active] == '0'
+      MailerJob.perform_in(1.seconds, 'deactivate', user.email)
+    end
+
     if user.errors.empty?
       flash[:notice] = 'Update successfully'
       redirect_to users_admin_path
@@ -40,6 +44,7 @@ class AdminsController < ApplicationController
 
   def delete_user
     user = User.find(params[:user_id])
+    MailerJob.perform_in(1.seconds, 'delete', user.email)
     user.destroy
     redirect_to request.referrer
   end

@@ -6,7 +6,7 @@ tr
   td
     = user.email
   td
-    | 4:56PM 20/06/2023
+    = get_time(user.last_sign_in_at)
   td.edit-user-actions.d-flex.gap-2
     button.bg-success.border-success.edit-action-btn
       = link_to "Edit", edit_user_admin_path(user), class: 'text-white'

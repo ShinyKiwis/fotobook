@@ -6,9 +6,10 @@ class AlbumsController < ApplicationController
     if request.path.include?('feeds')
       if current_user && request.path.include?('feeds')
         following_users = current_user.followees
-        following_users.each do |user|
-          @albums = user.albums.where(sharing_mode: 'public').page(params[:page]).per(10)
-        end
+        @albums = Album.order(created_at: :desc).where(sharing_mode: 'public', user_id: following_users.pluck(:id)).page(params[:page]).per(10)
+        # following_users.each do |user|
+        #   @albums = user.albums.where(sharing_mode: 'public').page(params[:page]).per(10)
+        # end
       end
       render 'public'
     else

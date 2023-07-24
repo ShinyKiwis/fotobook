@@ -20,5 +20,5 @@
                   = render 'shared/buttons/like/like_button', asset: photo, like_status: false
 
               span.ms-auto.text-center
-                = photo.created_at.in_time_zone("Asia/Ho_Chi_Minh").strftime("%H:%M %P %d/%m/%Y")
+                = get_time(photo.created_at)
   = render 'photos/modal', photo: photo

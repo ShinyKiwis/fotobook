@@ -1,18 +1,15 @@
-
 class CustomFailureApp < Devise::FailureApp
   def redirect_url
-    if warden_message == :unconfirmed
-      return login_path
-    end
-    super
+    login_path
   end
 
   # You need to override respond
   def respond
-    if warden_message == :unconfirmed
-      return redirect
+    if http_auth?
+      http_auth
+    else
+      redirect
     end
-    super
   end
 end
 

@@ -7,4 +7,9 @@
             | Notifcation
           button.btn-close[type="button" aria-label="Close" data-action="click->toast#hide"]
         .toast-body
+          - if alert.is_a?(Array)
+            - alert.each do |message|
+              li 
+                = message
+          - else
             = notice || alert

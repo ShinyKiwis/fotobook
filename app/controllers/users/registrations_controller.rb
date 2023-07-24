@@ -6,13 +6,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource
   def create
-    super
+    super do |resource|
+      if resource.errors.any?
+        flash[:alert] = resource.errors.full_messages
+        redirect_to signup_path and return
+      end
+    end
   end
 
   # GET /resource/edit

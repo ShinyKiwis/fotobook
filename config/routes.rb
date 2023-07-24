@@ -61,4 +61,6 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end
 
+  get '/users', to: redirect('/users/sign_up')
+
 end

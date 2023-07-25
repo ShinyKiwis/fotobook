@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     edit: ':id/edit'
   }, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    confirmations: 'users/confirmations'
   }
 
 

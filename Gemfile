@@ -95,3 +95,5 @@ gem 'dotenv-rails'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'kaminari'
 gem 'sidekiq'
+
+gem "dockerfile-rails", ">= 1.5", :group => :development

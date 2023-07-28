@@ -3,7 +3,7 @@ require 'pry'
 class PhotosController < ApplicationController
   def index
     @photos = []
-    if request.path.include?('feeds')
+    if request.path.include?('feeds') || request.path == root_path
       if current_user && request.path.include?('feeds')
         following_users = current_user.followees
         @photos = Photo.order(created_at: :desc).where(sharing_mode: 'public', user_id: following_users.pluck(:id)).page(params[:page]).per(10)

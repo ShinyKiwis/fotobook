@@ -3,7 +3,7 @@ ul.ms-4.mt-5
     li.nav-item
       = link_to "#{t('nav.normal.feeds')}", root_path, class: "#{active_link('feeds')}"
     li.nav-item
-      = link_to "#{t('nav.normal.discover')}", discover_photos_path, class: "#{active_link('discover')}"
+      = link_to "#{t('nav.normal.discover')}", discover_photos_path, class: "#{request.path == root_path ? 'active' : active_link('discover')}"
   - else
     li.nav-item
       = link_to "#{t('nav.admin.photos')}", photos_admin_path, class: "#{active_link('photos')}"

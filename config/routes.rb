@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   match '*path', via: [:options], to: lambda {|_| [204, { 'Content-Type' => 'text/plain' }]}
-  root "application#welcome"
+  root "photos#index_discover"
 
   devise_for :users,path_names: {
     edit: ':id/edit'

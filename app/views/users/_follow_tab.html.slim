@@ -20,5 +20,5 @@
             = user.albums.count
           span
             | ALBUMS
-    - if user.id != current_user.id
+    - if current_user&.id != user.id
       = render 'shared/buttons/follow_button', user: user , style: 'margin-top: auto !important'
